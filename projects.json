@@ -1,14 +1,8 @@
-[
-    {
-        "name": "AI Chatbot",
-        "description": "Build a conversational chatbot using NLP."
-    },
-    {
-        "name": "Smart Agriculture",
-        "description": "IoT-based solution for monitoring crops."
-    },
-    {
-        "name": "E-Commerce Platform",
-        "description": "Develop a basic online shopping website."
-    }
-]
+{
+  "projects": [
+    { "title": "AI Chatbot for Education" },
+    { "title": "Online Portfolio Builder" },
+    { "title": "Hospital Management System" },
+    { "title": "Smart Attendance using Face Recognition" }
+  ]
+}

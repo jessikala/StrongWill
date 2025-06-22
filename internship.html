@@ -1,66 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StrongWill</title>
-
-  <!-- ✅ SEO Tags -->
-  <meta name="description" content="StrongWill - Digital transformation services, student projects, and internships for freshers.">
-  <meta name="keywords" content="digital transformation, student projects, internships, StrongWill, freshers">
-  <meta name="author" content="StrongWill Team">
-
-  <!-- ✅ Open Graph (for social sharing) -->
-  <meta property="og:title" content="StrongWill - Empowering Freshers">
-  <meta property="og:description" content="Explore internships, student projects, and digital innovation with StrongWill.">
-  <meta property="og:image" content="https://www.strongwill.in/assets/logo.png">
-  <meta property="og:url" content="https://www.strongwill.in">
-  <meta property="og:type" content="website">
-
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internship Application</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <header>
-        <h1>Apply for Internship</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="internship.html">Internship</a>
-            <a href="admin.html">Admin</a>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Internship Application Form</h2>
-            <form action="https://formspree.io/f/mnqepzwv" method="POST" enctype="multipart/form-data">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="tel" name="phone" placeholder="Phone Number" required>
-                <select name="interest" required>
-                    <option value="">-- Area of Interest --</option>
-                    <option>Web Development</option>
-                    <option>Mobile App Development</option>
-                    <option>AI / Machine Learning</option>
-                    <option>Data Science</option>
-                    <option>Cybersecurity</option>
-                    <option>Cloud Computing</option>
-                    <option>UI/UX Design</option>
-                    <option>Blockchain</option>
-                    <option>Game Development</option>
-                    <option>DevOps</option>
-                    <option>IoT (Internet of Things)</option>
-                    <option>AR/VR</option>
-                    <option>Software Testing</option>
-                    <option>Database Management</option>
-                </select>
-                <input type="file" name="resume" accept=".pdf,.doc,.docx">
-                <button type="submit">Submit Application</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 StrongWill. All rights reserved.</p>
-    </footer>
+  <header>
+    <h1>Internship Application</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="internship.html">Internship</a>
+      <a href="certificate.html">Certificate</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+  <main>
+    <form action="https://formspree.io/f/mnqepzwv" method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <select name="interest" required>
+        <option value="">-- Area of Interest --</option>
+        <option>Web Development</option>
+        <option>AI / Machine Learning</option>
+        <option>Cybersecurity</option>
+        <option>Data Science</option>
+      </select>
+      <input type="file" name="resume" accept=".pdf,.doc,.docx" />
+      <button type="submit">Submit Application</button>
+    </form>
+  </main>
 </body>
 </html>

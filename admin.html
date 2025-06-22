@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StrongWill</title>
-
-  <!-- ✅ SEO Tags -->
-  <meta name="description" content="StrongWill - Digital transformation services, student projects, and internships for freshers.">
-  <meta name="keywords" content="digital transformation, student projects, internships, StrongWill, freshers">
-  <meta name="author" content="StrongWill Team">
-
-  <!-- ✅ Open Graph (for social sharing) -->
-  <meta property="og:title" content="StrongWill - Empowering Freshers">
-  <meta property="og:description" content="Explore internships, student projects, and digital innovation with StrongWill.">
-  <meta property="og:image" content="https://www.strongwill.in/assets/logo.png">
-  <meta property="og:url" content="https://www.strongwill.in">
-  <meta property="og:type" content="website">
-
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <main>
-        <h2>Admin Panel</h2>
-        <form id="admin-login-form">
-            <input type="text" id="admin-username" placeholder="Username" required>
-            <input type="password" id="admin-password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <div id="admin-section" style="display:none;">
-            <h3>Manage Projects</h3>
-            <form id="add-project-form">
-                <input type="text" id="project-name" placeholder="Project Name" required>
-                <textarea id="project-description" placeholder="Project Description" required></textarea>
-                <button type="submit">Add Project</button>
-            </form>
-            <ul id="project-list-admin"></ul>
-        </div>
-    </main>
-    <script src="script.js"></script>
+  <header>
+    <h1>Admin Panel</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="internship.html">Internship</a>
+      <a href="certificate.html">Certificate</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Add New Project</h2>
+    <form id="adminForm">
+      <input type="text" id="newProject" placeholder="Project Title" required />
+      <button type="submit">Add Project</button>
+    </form>
+    <p><em>Note: Changes will not persist after page refresh as this is a static demo.</em></p>
+  </main>
+  <script>
+    document.getElementById('adminForm').onsubmit = function(e) {
+      e.preventDefault();
+      alert("Project added locally. Save to JSON manually in real scenario.");
+    };
+  </script>
 </body>
 </html>

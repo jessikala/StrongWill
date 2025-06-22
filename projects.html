@@ -3,50 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StrongWill</title>
-
-  <!-- ✅ SEO Tags -->
-  <meta name="description" content="StrongWill - Digital transformation services, student projects, and internships for freshers.">
-  <meta name="keywords" content="digital transformation, student projects, internships, StrongWill, freshers">
-  <meta name="author" content="StrongWill Team">
-
-  <!-- ✅ Open Graph (for social sharing) -->
-  <meta property="og:title" content="StrongWill - Empowering Freshers">
-  <meta property="og:description" content="Explore internships, student projects, and digital innovation with StrongWill.">
-  <meta property="og:image" content="https://www.strongwill.in/assets/logo.png">
-  <meta property="og:url" content="https://www.strongwill.in">
-  <meta property="og:type" content="website">
-
-  <link rel="stylesheet" href="style.css">
+  <title>Student Projects</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <header>
-        <h1>Student Projects</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="internship.html">Internship</a>
-            <a href="admin.html">Admin</a>
-        </nav>
-    </header>
-    <main>
-        <section id="project-list">
-            <!-- Project list will be rendered here -->
-        </section>
-        <section id="register">
-            <h2>Register for a Project</h2>
-            <form id="registration-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <select id="project-select" required></select>
-                <button type="submit">Register</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 StrongWill. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+  <header>
+    <h1>Student Projects</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="internship.html">Internship</a>
+      <a href="certificate.html">Certificate</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Available Projects</h2>
+    <div id="project-list"></div>
+    <h3>Register for a Project</h3>
+    <form id="project-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <select id="projectSelect" required></select>
+      <button type="submit">Register</button>
+    </form>
+  </main>
+  <script>
+    fetch('projects.json')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('project-list');
+        const select = document.getElementById('projectSelect');
+        data.projects.forEach(p => {
+          const div = document.createElement('div');
+          div.textContent = p.title;
+          list.appendChild(div);
+          const opt = document.createElement('option');
+          opt.value = p.title;
+          opt.textContent = p.title;
+          select.appendChild(opt);
+        });
+      });
+  </script>
 </body>
 </html>
