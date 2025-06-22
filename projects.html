@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Student Projects</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -20,15 +20,43 @@
   <main>
     <h2>Available Projects</h2>
     <div id="project-list"></div>
+
     <h3>Register for a Project</h3>
-    <form id="project-form">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <select id="projectSelect" required></select>
-      <button type="submit">Register</button>
+    <form id="project-form" action="https://formspree.io/f/mnqepzwv" method="POST">
+      <input type="text" name="Name" placeholder="Name (as per records)" required />
+      <select name="Gender" required>
+        <option value="">Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+      <input type="tel" name="Phone" placeholder="Phone" required />
+      <input type="email" name="Email" placeholder="Email" required />
+      <input type="text" name="College Name" placeholder="College Name (as per records)" required />
+      <input type="text" name="College Address" placeholder="College Address" required />
+      <input type="text" name="Year" placeholder="Year" required />
+      <input type="text" name="Degree" placeholder="Degree Name" required />
+      <input type="text" name="Discipline" placeholder="Discipline Name" required />
+      <input type="text" name="Duration" placeholder="Project Duration" required />
+      <input type="date" name="Start Date" placeholder="Start Date" required />
+      <input type="date" name="End Date" placeholder="End Date" required />
+      <select name="Project" id="projectSelect" required>
+        <option value="">-- Select Project --</option>
+      </select>
+      <input type="hidden" name="_cc" value="jessikalanalli@gmail.com" />
+      <button type="submit" id="submitBtn" disabled>Submit</button>
     </form>
   </main>
   <script>
+    const form = document.getElementById('project-form');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('input', () => {
+      const allFilled = Array.from(form.elements).every(input =>
+        input.type === "submit" || input.type === "hidden" || input.value
+      );
+      submitBtn.disabled = !allFilled;
+    });
+
     fetch('projects.json')
       .then(res => res.json())
       .then(data => {
