@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h2>Admin Panel</h2>
+        <form id="admin-login-form">
+            <input type="text" id="admin-username" placeholder="Username" required>
+            <input type="password" id="admin-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div id="admin-section" style="display:none;">
+            <h3>Manage Projects</h3>
+            <form id="add-project-form">
+                <input type="text" id="project-name" placeholder="Project Name" required>
+                <textarea id="project-description" placeholder="Project Description" required></textarea>
+                <button type="submit">Add Project</button>
+            </form>
+            <ul id="project-list-admin"></ul>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

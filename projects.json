@@ -1,0 +1,14 @@
+[
+    {
+        "name": "AI Chatbot",
+        "description": "Build a conversational chatbot using NLP."
+    },
+    {
+        "name": "Smart Agriculture",
+        "description": "IoT-based solution for monitoring crops."
+    },
+    {
+        "name": "E-Commerce Platform",
+        "description": "Develop a basic online shopping website."
+    }
+]
