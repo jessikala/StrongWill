@@ -120,35 +120,51 @@
       <a href="internship.html">Internship</a>
       <a href="certificate.html">Certificate</a>
       <a href="admin.html">Admin</a>
+      <a href="Students_Project_Registration.html">Student Project Registration</a>
     </nav>
   </header>
   <main>
-    <h2>Add New Project</h2>
-    <form id="adminForm" autocomplete="off">
-      <label for="newProject">Project Title</label>
-      <input type="text" id="newProject" placeholder="e.g. AI Chatbot" required />
-      <button type="submit">Add Project</button>
-    </form>
-    <div class="success-message" id="successMsg">Project added locally! (Static demo)</div>
-    <p><em>Note: Changes will not persist after page refresh as this is a static demo.</em></p>
+    <h2>Student Project Registrations</h2>
+    <table id="regTable" style="width:100%;border-collapse:collapse;margin-bottom:1.5rem;">
+      <thead>
+        <tr style="background:#e0e7ff;">
+          <th style="padding:8px;border:1px solid #a5b4fc;">Name</th>
+          <th style="padding:8px;border:1px solid #a5b4fc;">Email</th>
+          <th style="padding:8px;border:1px solid #a5b4fc;">Mobile</th>
+          <th style="padding:8px;border:1px solid #a5b4fc;">College</th>
+          <th style="padding:8px;border:1px solid #a5b4fc;">City</th>
+          <th style="padding:8px;border:1px solid #a5b4fc;">Year</th>
+          <th style="padding:8px;border:1px solid #a5b4fc;">Status</th>
+        </tr>
+      </thead>
+      <tbody id="regTableBody">
+      </tbody>
+    </table>
+    <p><em>Note: Registrations are stored in browser localStorage for demo purposes.</em></p>
   </main>
   <script>
-    const form = document.getElementById('adminForm');
-    const input = document.getElementById('newProject');
-    const successMsg = document.getElementById('successMsg');
-    form.onsubmit = function(e) {
-      e.preventDefault();
-      if (input.value.trim() === "") {
-        input.focus();
-        return;
-      }
-      successMsg.style.display = 'block';
-      setTimeout(() => {
-        successMsg.style.display = 'none';
-      }, 2000);
-      input.value = "";
-      input.focus();
-    };
+    function loadRegistrations() {
+      const tbody = document.getElementById('regTableBody');
+      tbody.innerHTML = '';
+      let allRegs = JSON.parse(localStorage.getItem('all_registrations') || '[]');
+      allRegs.forEach(email => {
+        const reg = JSON.parse(localStorage.getItem('registration_' + email) || 'null');
+        if (reg) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.name || ''}</td>
+            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.email || ''}</td>
+            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.mobile || ''}</td>
+            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.college || ''}</td>
+            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.city || ''}</td>
+            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.year || ''}</td>
+            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.status || ''}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+      });
+    }
+    window.onload = loadRegistrations;
   </script>
 </body>
 </html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Project Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f7f7; }
+        .container { max-width: 400px; margin: 40px auto; background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
+        h2 { text-align: center; }
+        label { display: block; margin-top: 12px; }
+        input, select, button { width: 100%; padding: 8px; margin-top: 4px; }
+        .hidden { display: none; }
+        .btn-group { display: flex; gap: 10px; margin-top: 16px; }
+        .btn-group button { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <h2>Student Login</h2>
+        <form id="login-form">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" required>
+            <label for="login-mobile">Mobile Number</label>
+            <input type="tel" id="login-mobile" pattern="[0-9]{10}" required>
+            <button type="button" onclick="sendOTP()">Send OTP</button>
+            <div id="otp-section" class="hidden">
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" maxlength="6" required>
+                <button type="button" onclick="verifyOTP()">Verify OTP</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container hidden" id="registration-container">
+        <h2>Project Registration</h2>
+        <form id="registration-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+            <label for="mobile">Mobile</label>
+            <input type="tel" id="mobile" pattern="[0-9]{10}" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+            <label for="college">College Name</label>
+            <input type="text" id="college" required>
+            <label for="city">City/Town</label>
+            <input type="text" id="city" required>
+            <label for="year">College Year</label>
+            <select id="year" required>
+                <option value="">Select Year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+            </select>
+            <div class="btn-group">
+                <button type="button" onclick="register()">Register</button>
+                <button type="button" onclick="unregister()">Unregister</button>
+            </div>
+        </form>
+        <div id="reg-message"></div>
+    </div>
+
+    <script>
+        // Simulated OTP and registration logic for demonstration purposes only
+
+        let generatedOTP = "";
+        let loggedInEmail = "";
+
+        function sendOTP() {
+            const mobile = document.getElementById('login-mobile').value;
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("Enter a valid 10-digit mobile number.");
+                return;
+            }
+            generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+            alert("OTP sent to your mobile: " + generatedOTP); // Replace with real SMS in production
+            document.getElementById('otp-section').classList.remove('hidden');
+        }
+
+        function verifyOTP() {
+            const otp = document.getElementById('otp').value;
+            if (otp === generatedOTP) {
+                loggedInEmail = document.getElementById('login-email').value;
+                document.getElementById('login-container').classList.add('hidden');
+                document.getElementById('registration-container').classList.remove('hidden');
+                // Pre-fill email and mobile
+                document.getElementById('email').value = loggedInEmail;
+                document.getElementById('mobile').value = document.getElementById('login-mobile').value;
+            } else {
+                alert("Invalid OTP. Please try again.");
+            }
+        }
+
+        function register() {
+            const regData = {
+                name: document.getElementById('name').value,
+                mobile: document.getElementById('mobile').value,
+                email: document.getElementById('email').value,
+                college: document.getElementById('college').value,
+                city: document.getElementById('city').value,
+                year: document.getElementById('year').value,
+                status: 'Registered'
+            };
+            if (Object.values(regData).some(v => !v)) {
+                alert("Please fill all fields.");
+                return;
+            }
+            // Save registration with status
+            localStorage.setItem('registration_' + regData.email, JSON.stringify(regData));
+            // Maintain a list of all registration emails
+            let allRegs = JSON.parse(localStorage.getItem('all_registrations') || '[]');
+            if (!allRegs.includes(regData.email)) {
+                allRegs.push(regData.email);
+                localStorage.setItem('all_registrations', JSON.stringify(allRegs));
+            }
+            document.getElementById('reg-message').innerText = "Registration successful!";
+        }
+
+        function unregister() {
+            const email = document.getElementById('email').value;
+            let reg = localStorage.getItem('registration_' + email);
+            if (reg) {
+                reg = JSON.parse(reg);
+                reg.status = 'Unregistered';
+                localStorage.setItem('registration_' + email, JSON.stringify(reg));
+            }
+            document.getElementById('reg-message').innerText = "You have been unregistered.";
+        }
+    </script>
+</body>
+</html>
