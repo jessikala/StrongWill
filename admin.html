@@ -153,16 +153,55 @@
         const reg = JSON.parse(localStorage.getItem('registration_' + email) || 'null');
         if (reg) {
           const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td style="padding:8px;border:1px solid #a5b4fc;">${serial++}</td>
-            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.name || ''}</td>
-            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.email || ''}</td>
-            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.mobile || ''}</td>
-            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.college || ''}</td>
-            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.city || ''}</td>
-            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.year || ''}</td>
-            <td style="padding:8px;border:1px solid #a5b4fc;">${reg.status || ''}</td>
-          `;
+          // Use textContent for each cell to avoid template literal issues
+          const tdSerial = document.createElement('td');
+          tdSerial.style.padding = '8px';
+          tdSerial.style.border = '1px solid #a5b4fc';
+          tdSerial.textContent = serial++;
+
+          const tdName = document.createElement('td');
+          tdName.style.padding = '8px';
+          tdName.style.border = '1px solid #a5b4fc';
+          tdName.textContent = reg.name || '';
+
+          const tdEmail = document.createElement('td');
+          tdEmail.style.padding = '8px';
+          tdEmail.style.border = '1px solid #a5b4fc';
+          tdEmail.textContent = reg.email || '';
+
+          const tdMobile = document.createElement('td');
+          tdMobile.style.padding = '8px';
+          tdMobile.style.border = '1px solid #a5b4fc';
+          tdMobile.textContent = reg.mobile || '';
+
+          const tdCollege = document.createElement('td');
+          tdCollege.style.padding = '8px';
+          tdCollege.style.border = '1px solid #a5b4fc';
+          tdCollege.textContent = reg.college || '';
+
+          const tdCity = document.createElement('td');
+          tdCity.style.padding = '8px';
+          tdCity.style.border = '1px solid #a5b4fc';
+          tdCity.textContent = reg.city || '';
+
+          const tdYear = document.createElement('td');
+          tdYear.style.padding = '8px';
+          tdYear.style.border = '1px solid #a5b4fc';
+          tdYear.textContent = reg.year || '';
+
+          const tdStatus = document.createElement('td');
+          tdStatus.style.padding = '8px';
+          tdStatus.style.border = '1px solid #a5b4fc';
+          tdStatus.textContent = reg.status || '';
+
+          tr.appendChild(tdSerial);
+          tr.appendChild(tdName);
+          tr.appendChild(tdEmail);
+          tr.appendChild(tdMobile);
+          tr.appendChild(tdCollege);
+          tr.appendChild(tdCity);
+          tr.appendChild(tdYear);
+          tr.appendChild(tdStatus);
           tbody.appendChild(tr);
         }
       });
