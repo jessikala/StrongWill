@@ -1,8 +1,20 @@
 {
   "projects": [
-    { "title": "AI Chatbot for Education" },
-    { "title": "Online Portfolio Builder" },
-    { "title": "Hospital Management System" },
-    { "title": "Smart Attendance using Face Recognition" }
+    {
+      "title": "AI Chatbot for Education",
+      "description": "A conversational AI assistant designed to help students and teachers with instant answers, study support, and administrative queries in an educational environment."
+    },
+    {
+      "title": "Online Portfolio Builder",
+      "description": "A web-based platform that enables users to create, customize, and share professional portfolios to showcase their skills, projects, and achievements."
+    },
+    {
+      "title": "Hospital Management System",
+      "description": "A comprehensive software solution for managing hospital operations, including patient records, appointments, billing, staff, and inventory."
+    },
+    {
+      "title": "Smart Attendance using Face Recognition",
+      "description": "An automated attendance system that leverages facial recognition technology to mark and track student or employee attendance accurately and efficiently."
+    }
   ]
 }
