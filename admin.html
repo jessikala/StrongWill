@@ -5,6 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Panel</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: #3730a3;
+      color: #fff;
+      padding: 1.5rem 0 1rem 0;
+      box-shadow: 0 2px 8px rgba(55,48,163,0.08);
+    }
+    header h1 {
+      margin: 0 0 0.5rem 0;
+      text-align: center;
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    nav a {
+      color: #c7d2fe;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    main {
+      max-width: 400px;
+      margin: 2.5rem auto;
+      background: #fff;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 24px rgba(55,48,163,0.10);
+      padding: 2.5rem 2rem 2rem 2rem;
+    }
+    h2 {
+      text-align: center;
+      color: #3730a3;
+      margin-bottom: 1.5rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    label {
+      font-weight: 500;
+      color: #3730a3;
+      margin-bottom: 0.2rem;
+    }
+    input[type="text"] {
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #a5b4fc;
+      border-radius: 0.7rem;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+    input[type="text"]:focus {
+      border: 2px solid #6366f1;
+      background: #f1f5f9;
+    }
+    button[type="submit"] {
+      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 0.7rem;
+      padding: 0.8rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+      transition: background 0.2s, transform 0.1s;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .success-message {
+      color: #16a34a;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 0.5rem;
+      padding: 0.7rem 1rem;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1rem;
+      display: none;
+    }
+    em {
+      color: #64748b;
+      font-size: 0.95rem;
+      display: block;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -19,16 +124,30 @@
   </header>
   <main>
     <h2>Add New Project</h2>
-    <form id="adminForm">
-      <input type="text" id="newProject" placeholder="Project Title" required />
+    <form id="adminForm" autocomplete="off">
+      <label for="newProject">Project Title</label>
+      <input type="text" id="newProject" placeholder="e.g. AI Chatbot" required />
       <button type="submit">Add Project</button>
     </form>
+    <div class="success-message" id="successMsg">Project added locally! (Static demo)</div>
     <p><em>Note: Changes will not persist after page refresh as this is a static demo.</em></p>
   </main>
   <script>
-    document.getElementById('adminForm').onsubmit = function(e) {
+    const form = document.getElementById('adminForm');
+    const input = document.getElementById('newProject');
+    const successMsg = document.getElementById('successMsg');
+    form.onsubmit = function(e) {
       e.preventDefault();
-      alert("Project added locally. Save to JSON manually in real scenario.");
+      if (input.value.trim() === "") {
+        input.focus();
+        return;
+      }
+      successMsg.style.display = 'block';
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+      }, 2000);
+      input.value = "";
+      input.focus();
     };
   </script>
 </body>

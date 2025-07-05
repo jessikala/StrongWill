@@ -5,6 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Student Projects</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: #3730a3;
+      color: #fff;
+      padding: 1.5rem 0 1rem 0;
+      box-shadow: 0 2px 8px rgba(55,48,163,0.08);
+    }
+    header h1 {
+      margin: 0 0 0.5rem 0;
+      text-align: center;
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    nav a {
+      color: #c7d2fe;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    main {
+      max-width: 700px;
+      margin: 2.5rem auto;
+      background: #fff;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 24px rgba(55,48,163,0.10);
+      padding: 2.5rem 2rem 2rem 2rem;
+    }
+    h2, h3 {
+      color: #3730a3;
+      text-align: center;
+    }
+    #project-list {
+      margin-bottom: 2rem;
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2%;
+      justify-content: space-between;
+      background: #f8fafc;
+      border-radius: 1rem;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 2px 8px rgba(99,102,241,0.06);
+      margin-top: 1.5rem;
+    }
+    form input, form select {
+      flex: 1 1 48%;
+      min-width: 180px;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #a5b4fc;
+      border-radius: 0.7rem;
+      font-size: 1rem;
+      outline: none;
+      margin-bottom: 0.5rem;
+      transition: border 0.2s;
+    }
+    form input:focus, form select:focus {
+      border: 2px solid #6366f1;
+      background: #f1f5f9;
+    }
+    button[type="submit"] {
+      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 0.7rem;
+      padding: 0.8rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+      transition: background 0.2s, transform 0.1s;
+      flex: 1 1 100%;
+      margin-top: 0.5rem;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
+      transform: translateY(-2px) scale(1.03);
+    }
+    @media (max-width: 600px) {
+      main { padding: 1rem 0.2rem; }
+      form input, form select { min-width: 100px; }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -22,7 +121,7 @@
     <div id="project-list"></div>
 
     <h3>Register for a Project</h3>
-    <form id="project-form" action="https://formspree.io/f/mnqepzwv" method="POST">
+    <form id="project-form">
       <input type="text" name="Name" placeholder="Name (as per records)" required />
       <select name="Gender" required>
         <option value="">Gender</option>
@@ -43,6 +142,7 @@
         <option value="">-- Select Project --</option>
       </select>
       <input type="hidden" name="_cc" value="jessikalanalli@gmail.com" />
+      <input type="hidden" name="_next" value="thankyou.html" />
       <button type="submit" id="submitBtn" disabled>Submit</button>
     </form>
   </main>
@@ -72,6 +172,10 @@
           select.appendChild(opt);
         });
       });
+
+    form.addEventListener("submit", function () {
+      alert("Thank you! Your registration has been submitted.");
+    });
   </script>
 </body>
 </html>

@@ -4,6 +4,99 @@
   <meta charset="UTF-8">
   <title>Certificate Generator</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: #3730a3;
+      color: #fff;
+      padding: 1.5rem 0 1rem 0;
+      box-shadow: 0 2px 8px rgba(55,48,163,0.08);
+    }
+    header h1 {
+      margin: 0 0 0.5rem 0;
+      text-align: center;
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    nav a {
+      color: #c7d2fe;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    main {
+      max-width: 420px;
+      margin: 2.5rem auto;
+      background: #fff;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 24px rgba(55,48,163,0.10);
+      padding: 2.5rem 2rem 2rem 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+    label {
+      font-weight: 500;
+      color: #3730a3;
+      margin-bottom: 0.2rem;
+    }
+    input[type="text"], input[type="date"] {
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #a5b4fc;
+      border-radius: 0.7rem;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+    input[type="text"]:focus, input[type="date"]:focus {
+      border: 2px solid #6366f1;
+      background: #f1f5f9;
+    }
+    button[type="button"] {
+      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 0.7rem;
+      padding: 0.8rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+      transition: background 0.2s, transform 0.1s;
+    }
+    button[type="button"]:hover {
+      background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .success-message {
+      color: #16a34a;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 0.5rem;
+      padding: 0.7rem 1rem;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1rem;
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -17,15 +110,38 @@
     </nav>
   </header>
   <main>
-    <form id="certificateForm">
-      <input type="text" id="studentName" placeholder="Student Name" required />
-      <input type="text" id="projectTitle" placeholder="Project Title" required />
-      <input type="text" id="duration" placeholder="Internship Duration" required />
+    <form id="certificateForm" autocomplete="off">
+      <label for="studentName">Student Name</label>
+      <input type="text" id="studentName" placeholder="e.g. John Doe" required />
+      <label for="projectTitle">Project Title</label>
+      <input type="text" id="projectTitle" placeholder="e.g. AI Chatbot" required />
+      <label for="duration">Internship Duration</label>
+      <input type="text" id="duration" placeholder="e.g. 3 months" required />
+      <label for="issueDate">Issue Date</label>
       <input type="date" id="issueDate" required />
       <button type="button" onclick="generateCertificate()">Generate PDF</button>
     </form>
+    <div class="success-message" id="certSuccessMsg">Certificate ready for download!</div>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    // Show a success message when the PDF is generated
+    function showCertSuccess() {
+      const msg = document.getElementById('certSuccessMsg');
+      msg.style.display = 'block';
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, 2000);
+    }
+    // Patch the global generateCertificate to show the message after PDF generation
+    const origGen = window.generateCertificate;
+    if (typeof origGen === 'function') {
+      window.generateCertificate = function() {
+        origGen();
+        showCertSuccess();
+      };
+    }
+  </script>
 </body>
 </html>
