@@ -128,6 +128,7 @@
     <table id="regTable" style="width:100%;border-collapse:collapse;margin-bottom:1.5rem;">
       <thead>
         <tr style="background:#e0e7ff;">
+          <th style="padding:8px;border:1px solid #a5b4fc;">S.No</th>
           <th style="padding:8px;border:1px solid #a5b4fc;">Name</th>
           <th style="padding:8px;border:1px solid #a5b4fc;">Email</th>
           <th style="padding:8px;border:1px solid #a5b4fc;">Mobile</th>
@@ -147,11 +148,13 @@
       const tbody = document.getElementById('regTableBody');
       tbody.innerHTML = '';
       let allRegs = JSON.parse(localStorage.getItem('all_registrations') || '[]');
+      let serial = 1;
       allRegs.forEach(email => {
         const reg = JSON.parse(localStorage.getItem('registration_' + email) || 'null');
         if (reg) {
           const tr = document.createElement('tr');
           tr.innerHTML = `
+            <td style="padding:8px;border:1px solid #a5b4fc;">${serial++}</td>
             <td style="padding:8px;border:1px solid #a5b4fc;">${reg.name || ''}</td>
             <td style="padding:8px;border:1px solid #a5b4fc;">${reg.email || ''}</td>
             <td style="padding:8px;border:1px solid #a5b4fc;">${reg.mobile || ''}</td>
