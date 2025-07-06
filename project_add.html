@@ -112,7 +112,7 @@
       <a href="projects.html">Projects</a>
       <a href="internship.html">Internship</a>
       <a href="certificate.html">Certificate</a>
-      <a href="admin.html">Admin</a>
+      <a href="students_list.html">Students List</a>
       <a href="Students_Project_Registration.html">Student Project Registration</a>
       <a href="project_add.html">Add Project</a>
     </nav>
@@ -127,7 +127,7 @@
       <button type="submit">Add Project</button>
     </form>
     <div id="msg"></div>
-    <p style="margin-top:1.5rem;color:#64748b;font-size:0.95rem;text-align:center;">Note: This demo only saves new projects in your browser's localStorage. To update the real JSON file, please copy the output and update <b>projects.json</b> manually.</p>
+    <p style="margin-top:1.5rem;color:#64748b;font-size:0.95rem;text-align:center;">Note: This demo only saves new projects in your browser's localStorage. To update the real JSON file, please copy the output and update <b>project_list.json</b> manually.</p>
     <div id="output" style="margin-top:1.5rem;"></div>
   </main>
   <footer>
@@ -159,7 +159,7 @@
       let projects = getProjects();
       projects.push({ title, description });
       setProjects(projects);
-      document.getElementById('msg').textContent = 'Project added! Copy the JSON below to update projects.json.';
+      document.getElementById('msg').textContent = 'Project added! Copy the JSON below to update project_list.json.';
       showOutput();
       document.getElementById('addProjectForm').reset();
     };

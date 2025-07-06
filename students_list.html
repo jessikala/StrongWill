@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel</title>
+  <title>Students List</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -53,54 +53,18 @@
       color: #3730a3;
       margin-bottom: 1.5rem;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
     }
-    label {
-      font-weight: 500;
-      color: #3730a3;
-      margin-bottom: 0.2rem;
+    th, td {
+      padding: 8px;
+      border: 1px solid #a5b4fc;
+      text-align: left;
     }
-    input[type="text"] {
-      padding: 0.7rem 1rem;
-      border: 1.5px solid #a5b4fc;
-      border-radius: 0.7rem;
-      font-size: 1rem;
-      outline: none;
-      transition: border 0.2s;
-    }
-    input[type="text"]:focus {
-      border: 2px solid #6366f1;
-      background: #f1f5f9;
-    }
-    button[type="submit"] {
-      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
-      color: #fff;
-      border: none;
-      border-radius: 0.7rem;
-      padding: 0.8rem 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(99,102,241,0.10);
-      transition: background 0.2s, transform 0.1s;
-    }
-    button[type="submit"]:hover {
-      background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
-      transform: translateY(-2px) scale(1.03);
-    }
-    .success-message {
-      color: #16a34a;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 0.5rem;
-      padding: 0.7rem 1rem;
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 1rem;
-      display: none;
+    th {
+      background: #e0e7ff;
     }
     em {
       color: #64748b;
@@ -109,33 +73,40 @@
       margin-top: 1.5rem;
       text-align: center;
     }
+    footer {
+      text-align: center;
+      color: #64748b;
+      background: none;
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Admin Panel</h1>
+    <h1>Students List</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
       <a href="internship.html">Internship</a>
       <a href="certificate.html">Certificate</a>
-      <a href="admin.html">Admin</a>
+      <a href="students_list.html">Students List</a>
       <a href="Students_Project_Registration.html">Student Project Registration</a>
     </nav>
   </header>
   <main>
     <h2>Student Project Registrations</h2>
-    <table id="regTable" style="width:100%;border-collapse:collapse;margin-bottom:1.5rem;">
+    <table id="regTable">
       <thead>
-        <tr style="background:#e0e7ff;">
-          <th style="padding:8px;border:1px solid #a5b4fc;">S.No</th>
-          <th style="padding:8px;border:1px solid #a5b4fc;">Name</th>
-          <th style="padding:8px;border:1px solid #a5b4fc;">Email</th>
-          <th style="padding:8px;border:1px solid #a5b4fc;">Mobile</th>
-          <th style="padding:8px;border:1px solid #a5b4fc;">College</th>
-          <th style="padding:8px;border:1px solid #a5b4fc;">City</th>
-          <th style="padding:8px;border:1px solid #a5b4fc;">Year</th>
-          <th style="padding:8px;border:1px solid #a5b4fc;">Status</th>
+        <tr>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>College</th>
+          <th>City</th>
+          <th>Year</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody id="regTableBody">
@@ -143,6 +114,9 @@
     </table>
     <p><em>Note: Registrations are stored in browser localStorage for demo purposes.</em></p>
   </main>
+  <footer>
+    <p>&copy; 2025 StrongWill. All rights reserved.</p>
+  </footer>
   <script>
     function loadRegistrations() {
       const tbody = document.getElementById('regTableBody');
@@ -153,55 +127,38 @@
         const reg = JSON.parse(localStorage.getItem('registration_' + email) || 'null');
         if (reg) {
           const tr = document.createElement('tr');
-          // Use textContent for each cell to avoid template literal issues
           const tdSerial = document.createElement('td');
-          tdSerial.style.padding = '8px';
-          tdSerial.style.border = '1px solid #a5b4fc';
           tdSerial.textContent = serial++;
+          tr.appendChild(tdSerial);
 
           const tdName = document.createElement('td');
-          tdName.style.padding = '8px';
-          tdName.style.border = '1px solid #a5b4fc';
           tdName.textContent = reg.name || '';
+          tr.appendChild(tdName);
 
           const tdEmail = document.createElement('td');
-          tdEmail.style.padding = '8px';
-          tdEmail.style.border = '1px solid #a5b4fc';
           tdEmail.textContent = reg.email || '';
+          tr.appendChild(tdEmail);
 
           const tdMobile = document.createElement('td');
-          tdMobile.style.padding = '8px';
-          tdMobile.style.border = '1px solid #a5b4fc';
           tdMobile.textContent = reg.mobile || '';
+          tr.appendChild(tdMobile);
 
           const tdCollege = document.createElement('td');
-          tdCollege.style.padding = '8px';
-          tdCollege.style.border = '1px solid #a5b4fc';
           tdCollege.textContent = reg.college || '';
+          tr.appendChild(tdCollege);
 
           const tdCity = document.createElement('td');
-          tdCity.style.padding = '8px';
-          tdCity.style.border = '1px solid #a5b4fc';
           tdCity.textContent = reg.city || '';
+          tr.appendChild(tdCity);
 
           const tdYear = document.createElement('td');
-          tdYear.style.padding = '8px';
-          tdYear.style.border = '1px solid #a5b4fc';
           tdYear.textContent = reg.year || '';
+          tr.appendChild(tdYear);
 
           const tdStatus = document.createElement('td');
-          tdStatus.style.padding = '8px';
-          tdStatus.style.border = '1px solid #a5b4fc';
           tdStatus.textContent = reg.status || '';
-
-          tr.appendChild(tdSerial);
-          tr.appendChild(tdName);
-          tr.appendChild(tdEmail);
-          tr.appendChild(tdMobile);
-          tr.appendChild(tdCollege);
-          tr.appendChild(tdCity);
-          tr.appendChild(tdYear);
           tr.appendChild(tdStatus);
+
           tbody.appendChild(tr);
         }
       });
