@@ -7,78 +7,100 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      background: linear-gradient(120deg, #18181b 0%, #312e81 100%);
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       min-height: 100vh;
+      color: #e0e7ef;
     }
     header {
-      background: #3730a3;
+      background: rgba(30,27,75,0.98);
       color: #fff;
       padding: 1.5rem 0 1rem 0;
-      box-shadow: 0 2px 8px rgba(55,48,163,0.08);
+      box-shadow: 0 2px 16px rgba(30,27,75,0.18);
+      border-bottom: 1.5px solid #6366f1;
     }
     header h1 {
       margin: 0 0 0.5rem 0;
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       letter-spacing: 2px;
+      font-weight: 700;
+      color: #a5b4fc;
+      text-shadow: 0 2px 8px #312e81;
     }
     nav {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 2.2rem;
       margin-bottom: 0.5rem;
     }
     nav a {
-      color: #c7d2fe;
+      color: #a5b4fc;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 1.08rem;
+      letter-spacing: 1px;
       transition: color 0.2s;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
     }
     nav a:hover {
       color: #fff;
-      text-decoration: underline;
+      background: #6366f1;
+      text-decoration: none;
     }
     main {
-      max-width: 400px;
+      max-width: 650px;
       margin: 2.5rem auto;
-      background: #fff;
-      border-radius: 1.2rem;
-      box-shadow: 0 4px 24px rgba(55,48,163,0.10);
-      padding: 2.5rem 2rem 2rem 2rem;
+      background: rgba(36,37,46,0.98);
+      border-radius: 1.3rem;
+      box-shadow: 0 6px 32px rgba(99,102,241,0.18);
+      padding: 2.7rem 2.2rem 2.2rem 2.2rem;
+      text-align: center;
+      border: 1.5px solid #6366f1;
     }
     h2 {
-      text-align: center;
-      color: #3730a3;
+      color: #a5b4fc;
       margin-bottom: 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #312e81;
+    }
+    p, em {
+      color: #cbd5e1;
+      font-size: 1.13rem;
+      line-height: 1.7;
     }
     table {
-      width: 100%;
-      border-collapse: collapse;
+      background: #232336;
+      color: #e0e7ef;
+      border-radius: 0.7rem;
+      border: 1.5px solid #6366f1;
       margin-bottom: 1.5rem;
     }
     th, td {
+      border: 1px solid #6366f1;
       padding: 8px;
-      border: 1px solid #a5b4fc;
-      text-align: left;
     }
     th {
-      background: #e0e7ff;
+      background: #312e81;
+      color: #a5b4fc;
     }
-    em {
-      color: #64748b;
-      font-size: 0.95rem;
-      display: block;
-      margin-top: 1.5rem;
-      text-align: center;
+    tr:nth-child(even) {
+      background: #232336;
+    }
+    tr:nth-child(odd) {
+      background: #18181b;
     }
     footer {
       text-align: center;
-      color: #64748b;
+      color: #a5b4fc;
       background: none;
-      margin-top: 2rem;
-      font-size: 1rem;
+      margin-top: 2.5rem;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
     }
     /* Responsive logo */
     .site-logo {
@@ -88,7 +110,7 @@
       min-height: 28px;
       vertical-align: middle;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(55,48,163,0.10);
+      box-shadow: 0 2px 8px #312e81;
       padding: 2px;
       background: none;
       transition: height 0.2s, max-width 0.2s;
@@ -97,6 +119,9 @@
       .site-logo {
         height: 28px;
         max-width: 100px;
+      }
+      main {
+        padding: 1.2rem 0.3rem;
       }
     }
   </style>
