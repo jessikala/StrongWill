@@ -99,15 +99,40 @@
       background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
       transform: translateY(-2px) scale(1.03);
     }
+    footer {
+      text-align: center;
+      color: #64748b;
+      background: none;
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
+    /* Responsive logo */
+    .site-logo {
+      height: 40px;
+      width: auto;
+      max-width: 160px;
+      min-height: 28px;
+      vertical-align: middle;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(55,48,163,0.10);
+      padding: 2px;
+      background: none;
+      transition: height 0.2s, max-width 0.2s;
+    }
     @media (max-width: 600px) {
-      main { padding: 1rem 0.2rem; }
-      form input, form select { min-width: 100px; }
+      .site-logo {
+        height: 28px;
+        max-width: 100px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Student Projects</h1>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;">
+      <img src="assets/StrongWill_logo.png" alt="StrongWill Logo" class="site-logo" />
+      <h1 style="margin:0;">Student Projects</h1>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
@@ -160,7 +185,7 @@
 
     fetch('project_list.json')
       .then(res => res.json())
-      .then(data => {
+      .then data => {
         const list = document.getElementById('project-list');
         const select = document.getElementById('projectSelect');
         data.projects.forEach(p => {

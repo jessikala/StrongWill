@@ -80,11 +80,33 @@
       margin-top: 2rem;
       font-size: 1rem;
     }
+    /* Responsive logo */
+    .site-logo {
+      height: 40px;
+      width: auto;
+      max-width: 160px;
+      min-height: 28px;
+      vertical-align: middle;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(55,48,163,0.10);
+      padding: 2px;
+      background: none;
+      transition: height 0.2s, max-width 0.2s;
+    }
+    @media (max-width: 600px) {
+      .site-logo {
+        height: 28px;
+        max-width: 100px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Students List</h1>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;">
+      <img src="assets/StrongWill_logo.png" alt="StrongWill Logo" class="site-logo" />
+      <h1 style="margin:0;">Students List</h1>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
