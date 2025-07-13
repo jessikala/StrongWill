@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Certificate Generator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - StrongWill</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -67,53 +68,37 @@
       letter-spacing: 1px;
       text-shadow: 0 2px 8px #312e81;
     }
-    p, label {
+    p {
       color: #cbd5e1;
       font-size: 1.13rem;
       line-height: 1.7;
     }
-    form {
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem 2rem;
+      margin-top: 2.5rem;
+    }
+    .member {
       background: #232336;
-      color: #e0e7ef;
       border-radius: 1rem;
-      border: 1.5px solid #6366f1;
-      box-shadow: 0 2px 8px rgba(99,102,241,0.06);
-    }
-    input[type="text"], input[type="date"] {
-      background: #18181b;
+      box-shadow: 0 2px 8px #312e81;
+      padding: 1.5rem 1.2rem;
+      min-width: 220px;
+      max-width: 260px;
       color: #e0e7ef;
       border: 1.5px solid #6366f1;
     }
-    input[type="text"]:focus, input[type="date"]:focus {
-      border: 2px solid #818cf8;
-      background: #232336;
+    .member h3 {
+      color: #a5b4fc;
+      margin-bottom: 0.5rem;
+      font-size: 1.15rem;
     }
-    button[type="button"] {
-      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
-      color: #fff;
-      border: none;
-      border-radius: 0.7rem;
-      padding: 0.8rem 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(99,102,241,0.10);
-      transition: background 0.2s, transform 0.1s;
-    }
-    button[type="button"]:hover {
-      background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
-      transform: translateY(-2px) scale(1.03);
-    }
-    .success-message {
-      color: #16a34a;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 0.5rem;
-      padding: 0.7rem 1rem;
-      margin-top: 1rem;
-      text-align: center;
+    .member p {
+      color: #cbd5e1;
       font-size: 1rem;
-      display: none;
+      margin: 0;
     }
     footer {
       text-align: center;
@@ -123,7 +108,6 @@
       font-size: 1.05rem;
       letter-spacing: 1px;
     }
-    /* Responsive logo */
     .site-logo {
       height: 40px;
       width: auto;
@@ -131,9 +115,9 @@
       min-height: 28px;
       vertical-align: middle;
       border-radius: 8px;
-      box-shadow: none;
-      padding: 0;
-      background: none !important;
+      box-shadow: 0 2px 8px #312e81;
+      padding: 2px;
+      background: none;
       transition: height 0.2s, max-width 0.2s;
     }
     @media (max-width: 600px) {
@@ -143,6 +127,10 @@
       }
       main {
         padding: 1.2rem 0.3rem;
+      }
+      .team {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -155,48 +143,31 @@
     </div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
+      <!-- <a href="projects.html">Projects</a>
       <a href="internship.html">Internship</a>
       <a href="certificate.html">Certificate</a>
       <a href="students_list.html">Students List</a>
       <a href="Students_Project_Registration.html">Student Project Registration</a>
-      <a href="project_add.html">Add Project</a>
+      <a href="project_add.html">Add Project</a> -->
       <a href="about_us.html">About Us</a>
     </nav>
   </header>
   <main>
-    <form id="certificateForm" autocomplete="off">
-      <label for="studentName">Student Name</label>
-      <input type="text" id="studentName" placeholder="e.g. John Doe" required />
-      <label for="projectTitle">Project Title</label>
-      <input type="text" id="projectTitle" placeholder="e.g. AI Chatbot" required />
-      <label for="duration">Internship Duration</label>
-      <input type="text" id="duration" placeholder="e.g. 3 months" required />
-      <label for="issueDate">Issue Date</label>
-      <input type="date" id="issueDate" required />
-      <button type="button" onclick="generateCertificate()">Generate PDF</button>
-    </form>
-    <div class="success-message" id="certSuccessMsg">Certificate ready for download!</div>
+    <h2>Who We Are</h2>
+    <p>StrongWill specializes in digital transformation, technology consulation, mobile & web application development, complex process automation, and large-scale project management. We are committed to delivering innovative solutions and providing comprehensive training and development for corporates, students, and individuals.</p>
+    <div class="team">
+      <div class="member">
+        <h3>Student's Digital Project</h3>
+        <p>Mentor students to choose and complete digital projects in emerging technology <br>Register yourself @ home page</p>
+      </div>
+      <div class="member">
+        <h3>StrongWill Team</h3>
+        <p>virtual presence @ Abu Dhabhi UAE, Manchester UK and Chennai INDIA</p>
+      </div>
+    </div>
   </main>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="script.js"></script>
-  <script>
-    // Show a success message when the PDF is generated
-    function showCertSuccess() {
-      const msg = document.getElementById('certSuccessMsg');
-      msg.style.display = 'block';
-      setTimeout(() => {
-        msg.style.display = 'none';
-      }, 2000);
-    }
-    // Patch the global generateCertificate to show the message after PDF generation
-    const origGen = window.generateCertificate;
-    if (typeof origGen === 'function') {
-      window.generateCertificate = function() {
-        origGen();
-        showCertSuccess();
-      };
-    }
-  </script>
+  <footer>
+    <p>&copy; 2025 StrongWill. All rights reserved.</p>
+  </footer>
 </body>
 </html>
