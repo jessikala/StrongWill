@@ -1,219 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Student Projects</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background: linear-gradient(120deg, #18181b 0%, #312e81 100%);
-      font-family: 'Segoe UI', Arial, sans-serif;
-      margin: 0;
-      min-height: 100vh;
-      color: #e0e7ef;
-    }
-    header {
-      background: rgba(30,27,75,0.98);
-      color: #fff;
-      padding: 1.5rem 0 1rem 0;
-      box-shadow: 0 2px 16px rgba(30,27,75,0.18);
-      border-bottom: 1.5px solid #6366f1;
-    }
-    header h1 {
-      margin: 0 0 0.5rem 0;
-      text-align: center;
-      font-size: 2.3rem;
-      letter-spacing: 2px;
-      font-weight: 700;
-      color: #a5b4fc;
-      text-shadow: 0 2px 8px #312e81;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
-    nav a {
-      color: #a5b4fc;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.08rem;
-      letter-spacing: 1px;
-      transition: color 0.2s;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-    }
-    nav a:hover {
-      color: #fff;
-      background: #6366f1;
-      text-decoration: none;
-    }
-    main {
-      max-width: 650px;
-      margin: 2.5rem auto;
-      background: rgba(36,37,46,0.98);
-      border-radius: 1.3rem;
-      box-shadow: 0 6px 32px rgba(99,102,241,0.18);
-      padding: 2.7rem 2.2rem 2.2rem 2.2rem;
-      text-align: center;
-      border: 1.5px solid #6366f1;
-    }
-    h2, h3 {
-      color: #a5b4fc;
-      text-align: center;
-      text-shadow: 0 2px 8px #312e81;
-    }
-    p, label {
-      color: #cbd5e1;
-      font-size: 1.13rem;
-      line-height: 1.7;
-    }
-    form, #project-list {
-      background: #232336;
-      color: #e0e7ef;
-      border-radius: 1rem;
-      border: 1.5px solid #6366f1;
-      box-shadow: 0 2px 8px rgba(99,102,241,0.06);
-    }
-    form input, form select {
-      background: #18181b;
-      color: #e0e7ef;
-      border: 1.5px solid #6366f1;
-    }
-    form input:focus, form select:focus {
-      border: 2px solid #818cf8;
-      background: #232336;
-    }
-    button[type="submit"] {
-      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
-      color: #fff;
-      border: none;
-      border-radius: 0.7rem;
-      padding: 0.8rem 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(99,102,241,0.10);
-      transition: background 0.2s, transform 0.1s;
-      flex: 1 1 100%;
-      margin-top: 0.5rem;
-    }
-    button[type="submit"]:hover {
-      background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%);
-      transform: translateY(-2px) scale(1.03);
-    }
-    footer {
-      text-align: center;
-      color: #a5b4fc;
-      background: none;
-      margin-top: 2.5rem;
-      font-size: 1.05rem;
-      letter-spacing: 1px;
-    }
-    /* Responsive logo */
-    .site-logo {
-      height: 40px;
-      width: auto;
-      max-width: 160px;
-      min-height: 28px;
-      vertical-align: middle;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px #312e81;
-      padding: 2px;
-      background: none;
-      transition: height 0.2s, max-width 0.2s;
-      /* border removed for real logo appearance */
-    }
-    @media (max-width: 600px) {
-      .site-logo {
-        height: 28px;
-        max-width: 100px;
+    <meta charset="UTF-8">
+    <title>Projects - StrongWill</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background: linear-gradient(120deg, #18181b 0%, #312e81 100%);
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        color: #e0e7ef;
+      }
+      header {
+        background: rgba(30,27,75,0.98);
+        color: #fff;
+        padding: 1.5rem 0 1rem 0;
+        box-shadow: 0 2px 16px rgba(30,27,75,0.18);
+        border-bottom: 1.5px solid #6366f1;
+      }
+      header h1 {
+        margin: 0 0 0.5rem 0;
+        text-align: center;
+        font-size: 2.3rem;
+        letter-spacing: 2px;
+        font-weight: 700;
+        color: #a5b4fc;
+        text-shadow: 0 2px 8px #312e81;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 2.2rem;
+        margin-bottom: 0.5rem;
+      }
+      nav a {
+        color: #a5b4fc;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.08rem;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+        padding: 0.2rem 0.5rem;
+        border-radius: 6px;
+      }
+      nav a:hover {
+        color: #fff;
+        background: #6366f1;
+        text-decoration: none;
       }
       main {
-        padding: 1.2rem 0.3rem;
+        max-width: 900px;
+        margin: 2.5rem auto;
+        background: rgba(36,37,46,0.98);
+        border-radius: 1.3rem;
+        box-shadow: 0 6px 32px rgba(99,102,241,0.18);
+        padding: 2.7rem 2.2rem 2.2rem 2.2rem;
+        text-align: center;
+        border: 1.5px solid #6366f1;
       }
-    }
-  </style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+        background: #232336;
+        color: #e0e7ef;
+        border-radius: 1rem;
+        box-shadow: 0 2px 8px rgba(99,102,241,0.06);
+        overflow: hidden;
+      }
+      th, td {
+        border: 1px solid #6366f1;
+        padding: 10px 15px;
+        text-align: left;
+      }
+      th {
+        background-color: #312e81;
+        color: #a5b4fc;
+      }
+      tr:nth-child(even) {
+        background-color: #232336;
+      }
+      tr:nth-child(odd) {
+        background-color: #18181b;
+      }
+      @media (max-width: 600px) {
+        .site-logo {
+          height: 28px;
+          max-width: 100px;
+        }
+        main {
+          padding: 1.2rem 0.3rem;
+        }
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+        th, td {
+          padding: 8px 6px;
+        }
+      }
+      .site-logo {
+        height: 40px;
+        width: auto;
+        max-width: 160px;
+        min-height: 28px;
+        vertical-align: middle;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px #312e81;
+        padding: 2px;
+        background: none;
+        transition: height 0.2s, max-width 0.2s;
+      }
+    </style>
 </head>
-<body>
-  <header>
-    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;">
-      <img src="assets/StrongWill_logo.png" alt="StrongWill Logo" class="site-logo" />
-      <h1 style="margin:0;">StrongWill</h1>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="internship.html">Internship</a>
-      <a href="certificate.html">Certificate</a>
-      <a href="students_list.html">Students List</a>
-      <a href="Students_Project_Registration.html">Student Project Registration</a>
-      <a href="project_add.html">Add Project</a>
-      <a href="about_us.html">About Us</a>
-    </nav>
-  </header>
-  <main>
-    <h2>Available Projects</h2>
-    <div id="project-list"></div>
-
-    <h3>Register for a Project</h3>
-    <form id="project-form">
-      <input type="text" name="Name" placeholder="Name (as per records)" required />
-      <select name="Gender" required>
-        <option value="">Gender</option>
-        <option>Male</option>
-        <option>Female</option>
-      </select>
-      <input type="tel" name="Phone" placeholder="Phone" required />
-      <input type="email" name="Email" placeholder="Email" required />
-      <input type="text" name="College Name" placeholder="College Name (as per records)" required />
-      <input type="text" name="College Address" placeholder="College Address" required />
-      <input type="text" name="Year" placeholder="Year" required />
-      <input type="text" name="Degree" placeholder="Degree Name" required />
-      <input type="text" name="Discipline" placeholder="Discipline Name" required />
-      <input type="text" name="Duration" placeholder="Project Duration" required />
-      <input type="date" name="Start Date" placeholder="Start Date" required />
-      <input type="date" name="End Date" placeholder="End Date" required />
-      <select name="Project" id="projectSelect" required>
-        <option value="">-- Select Project --</option>
-      </select>
-      <input type="hidden" name="_cc" value="jessikalanalli@gmail.com" />
-      <input type="hidden" name="_next" value="thankyou.html" />
-      <button type="submit" id="submitBtn" disabled>Submit</button>
-    </form>
-  </main>
-  <script>
-    const form = document.getElementById('project-form');
-    const submitBtn = document.getElementById('submitBtn');
-
-    form.addEventListener('input', () => {
-      const allFilled = Array.from(form.elements).every(input =>
-        input.type === "submit" || input.type === "hidden" || input.value
-      );
-      submitBtn.disabled = !allFilled;
-    });
-
-    fetch('project_list.json')
-      .then(res => res.json())
-      .then data => {
-        const list = document.getElementById('project-list');
-        const select = document.getElementById('projectSelect');
-        data.projects.forEach(p => {
-          const div = document.createElement('div');
-          div.textContent = p.title;
-          list.appendChild(div);
-          const opt = document.createElement('option');
-          opt.value = p.title;
-          opt.textContent = p.title;
-          select.appendChild(opt);
-        });
-      });
-
-    form.addEventListener("submit", function () {
-      alert("Thank you! Your registration has been submitted.");
-    });
-  </script>
-</body>
-</html>
+  <body>
+    <header>
+      <div style="display:flex;align-items:center;justify-content:center;gap:1rem;">
+        <img src="assets/StrongWill_logo.png" alt="StrongWill Logo" class="site-logo" />
+        <h1 style="margin:0;">StrongWill</h1>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <!-- <a href="internship.html">Internship</a>
+        <a href="certificate.html">Certificate</a>
+        <a href="students_list.html">Students List</a>
+        <a href="Students_Project_Registration.html">Student Project Registration</a>
+        <a href="project_add.html">Add Project</a> -->
+        <a href="about_us.html">About Us</a>
+      </nav>
+    </header>
+    <main>
+      <h2>Project List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Project Domain</th>
+            <th>Project Short Name</th>
+            <th>Project Description</th>
+            <th>Total Hours</th>
+            <th>Number of Days (Total Hours / 2)</th>
+            <th>Complexity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Web Development</td><td>E-Placement Portal</td><td>A portal to manage campus placements, student profiles, job postings, and interview schedules.</td><td>80</td><td>40</td><td>Medium</td></tr>
+          <tr><td>2</td><td>Mobile App Development</td><td>Fitness Tracker App</td><td>An app that tracks user steps, calories burned, workout schedules, and health goals with daily reminders.</td><td>100</td><td>50</td><td>Medium</td></tr>
+          <tr><td>3</td><td>Machine Learning</td><td>Student Performance ML</td><td>Predict student grades based on attendance, internal marks, and participation using machine learning algorithms.</td><td>120</td><td>60</td><td>High</td></tr>
+          <tr><td>4</td><td>Internet of Things (IoT)</td><td>Smart Attendance System</td><td>RFID and sensor-based student attendance system integrated with a web dashboard.</td><td>100</td><td>50</td><td>High</td></tr>
+          <tr><td>5</td><td>Data Analytics</td><td>Sales Data Dashboard</td><td>A dashboard to visualize e-commerce sales data using Power BI or Tableau.</td><td>70</td><td>35</td><td>Medium</td></tr>
+          <tr><td>6</td><td>Cybersecurity</td><td>Phishing Detection Tool</td><td>A browser extension or web-based app that identifies suspicious links or potential phishing emails.</td><td>90</td><td>45</td><td>High</td></tr>
+          <tr><td>7</td><td>Cloud Computing</td><td>Cloud File Storage</td><td>A mini cloud-based file management system similar to Google Drive using AWS or Firebase.</td><td>100</td><td>50</td><td>High</td></tr>
+          <tr><td>8</td><td>AI & Chatbots</td><td>College Help Chatbot</td><td>A chatbot to answer common college-related queries (fees, timetable, faculty, etc.) using AI frameworks.</td><td>80</td><td>40</td><td>Medium</td></tr>
+          <tr><td>9</td><td>Augmented Reality (AR)</td><td>AR Campus Tour</td><td>An AR-based mobile app to guide new students on a virtual tour around the college campus.</td><td>110</td><td>55</td><td>High</td></tr>
+          <tr><td>10</td><td>E-Commerce</td><td>Local Vendor Marketplace</td><td>A platform for small vendors to list their products and sell them online, focusing on a specific locality.</td><td>90</td><td>45</td><td>Medium</td></tr>
+          <tr><td>11</td><td>Blockchain</td><td>Academic Certificate Chain</td><td>A blockchain-based academic certificate verification system to avoid forgery.</td><td>120</td><td>60</td><td>High</td></tr>
+          <tr><td>12</td><td>Social Media</td><td>College Social Hub</td><td>A closed social media platform for students and faculty to share updates, events, and achievements.</td><td>90</td><td>45</td><td>Medium</td></tr>
+          <tr><td>13</td><td>Education Tech</td><td>Online Quiz Generator</td><td>A tool for teachers to create timed quizzes, auto-grade them, and track student performance.</td><td>80</td><td>40</td><td>Medium</td></tr>
+          <tr><td>14</td><td>Health Informatics</td><td>Smart Health Record App</td><td>A secure app for storing personal health records and providing doctor appointment management.</td><td>100</td><td>50</td><td>High</td></tr>
+          <tr><td>15</td><td>Automation</td><td>Lab Inventory Management</td><td>An app for managing lab equipment, issuing items to students, and alerting for refills and repairs.</td><td>75</td><td>38</td><td>Medium</td></tr>
+        </tbody>
+      </table>
+    </main>
+    <footer>
+      <p>&copy; 2025 StrongWill. All rights reserved.</p>
+    </footer>
+  </body>
+  </html>
