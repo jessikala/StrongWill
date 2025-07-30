@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <title>பைபிள் வினாடி வினா</title>
+  <style>
+    body { font-family: 'Latha', sans-serif; background-color: #f0f0f0; padding: 20px; }
+    .quiz-container { max-width: 700px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2 { color: #333; }
+    .question { margin-bottom: 20px; }
+    .option { margin: 5px 0; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin-top: 20px; }
+    #result { margin-top: 20px; font-weight: bold; color: green; }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2>பைபிள் வினாடி வினா</h2>
+    <form id="quizForm">
+      <div class="question">
+        <p>1. நோவா கப்பலில் எத்தனை பேர் இருந்தனர்?</p>
+        <div class="option"><input type="radio" name="q1" value="wrong"> 4</div>
+        <div class="option"><input type="radio" name="q1" value="wrong"> 6</div>
+        <div class="option"><input type="radio" name="q1" value="correct"> 8</div>
+        <div class="option"><input type="radio" name="q1" value="wrong"> 10</div>
+      </div>
+
+      <div class="question">
+        <p>2. இயேசு எத்தனை சீடர்களை தேர்ந்தெடுத்தார்?</p>
+        <div class="option"><input type="radio" name="q2" value="wrong"> 10</div>
+        <div class="option"><input type="radio" name="q2" value="correct"> 12</div>
+        <div class="option"><input type="radio" name="q2" value="wrong"> 14</div>
+        <div class="option"><input type="radio" name="q2" value="wrong"> 7</div>
+      </div>
+
+      <div class="question">
+        <p>3. பைபிளில் முதல் புத்தகம் எது?</p>
+        <div class="option"><input type="radio" name="q3" value="correct"> ஆதியாகமம்</div>
+        <div class="option"><input type="radio" name="q3" value="wrong"> யாத்திராகமம்</div>
+        <div class="option"><input type="radio" name="q3" value="wrong"> லேவியராகமம்</div>
+        <div class="option"><input type="radio" name="q3" value="wrong"> எண்ணாகமம்</div>
+      </div>
+
+      <div class="question">
+        <p>4. இயேசு எங்கே பிறந்தார்?</p>
+        <div class="option"><input type="radio" name="q4" value="wrong"> நாசரேத்து</div>
+        <div class="option"><input type="radio" name="q4" value="correct"> பெத்லகேம்</div>
+        <div class="option"><input type="radio" name="q4" value="wrong"> எருசலேம்</div>
+        <div class="option"><input type="radio" name="q4" value="wrong"> கப்பர்நாகூம்</div>
+      </div>
+
+      <div class="question">
+        <p>5. பைபிளில் எத்தனை நூல்கள் உள்ளன?</p>
+        <div class="option"><input type="radio" name="q5" value="wrong"> 50</div>
+        <div class="option"><input type="radio" name="q5" value="wrong"> 60</div>
+        <div class="option"><input type="radio" name="q5" value="correct"> 66</div>
+        <div class="option"><input type="radio" name="q5" value="wrong"> 70</div>
+      </div>
+
+      <button type="button" onclick="calculateScore()">பதில் அளிக்கவும்</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateScore() {
+      let score = 0;
+      for (let i = 1; i <= 5; i++) {
+        const answer = document.querySelector(`input[name="q${i}"]:checked`);
+        if (answer && answer.value === "correct") {
+          score++;
+        }
+      }
+      const result = document.getElementById('result');
+      result.textContent = `மொத்த மதிப்பெண்: ${score} / 5`;
+    }
+  </script>
+</body>
+</html>
