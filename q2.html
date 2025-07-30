@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <title>பைபிள் வினா</title>
+  <style>
+    body {
+      font-family: 'Latha', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(120deg, #e0eafc 0%, #a5b4fc 100%);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-size: 2.16rem;
+    }
+    header {
+      background: #312e81;
+      color: #fff;
+      padding: 1.2rem 0 0.7rem 0;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(49,46,129,0.10);
+      border-bottom: 2px solid #6366f1;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 4.2rem;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      color: #a5b4fc;
+      text-shadow: 0 2px 8px #312e81;
+    }
+    .quiz-container {
+      max-width: 600px;
+      margin: 40px auto 30px auto;
+      background: rgba(255,255,255,0.98);
+      padding: 32px 22px 28px 22px;
+      border-radius: 1.2rem;
+      box-shadow: 0 6px 32px rgba(99,102,241,0.13);
+      border: 1.5px solid #6366f1;
+    }
+    h2 {
+      text-align: center;
+      color: #312e81;
+      margin-bottom: 1.2rem;
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .option, p {
+      margin: 20px 0 10px 0;
+      font-size: 2.16rem;
+      color: #312e81;
+      padding-left: 8px;
+      display: block;
+    }
+    input[type="radio"] {
+      accent-color: #6366f1;
+      margin-right: 8px;
+      transform: scale(2);
+    }
+    button {
+      padding: 20px 44px;
+      font-size: 2.16rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 1px 4px #a5b4fc33;
+      transition: background 0.2s, color 0.2s;
+      background-color: #6366f1;
+      color: #fff;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #result {
+      margin-top: 24px;
+      font-weight: bold;
+      text-align: center;
+      color: #d63384;
+      font-size: 2.36rem;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 700px) {
+      body {
+        font-size: 1.1rem;
+      }
+      header h1 {
+        font-size: 2.1rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      .option, p {
+        font-size: 1.1rem;
+      }
+      button {
+        font-size: 1.1rem;
+        padding: 10px 22px;
+      }
+      #result {
+        font-size: 1.18rem;
+      }
+      .quiz-container {
+        padding: 12px 2px 12px 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>பைபிள் வினாடி வினா</h1>
+  </header>
+  <div class="quiz-container">
+    <div class="progress-bar"><div class="progress" id="progressBar"></div></div>
+    <form id="quizForm">
+      <div class="question active">
+        <p>1. பைபிளில் முதல் மனிதன் யார்?</p>
+        <div class="option"><input type="radio" name="q1" value="correct"> ஆதாம்</div>
+        <div class="option"><input type="radio" name="q1" value="wrong"> மோசே</div>
+        <div class="option"><input type="radio" name="q1" value="wrong"> அபிராம்</div>
+        <div class="option"><input type="radio" name="q1" value="wrong"> ஏசாவ்</div>
+      </div>
+      <div class="question">
+        <p>2. இயேசு எங்கே பிறந்தார்?</p>
+        <div class="option"><input type="radio" name="q2" value="correct"> பெத்லகேம்</div>
+        <div class="option"><input type="radio" name="q2" value="wrong"> நாசரேத்து</div>
+        <div class="option"><input type="radio" name="q2" value="wrong"> எருசலேம்</div>
+        <div class="option"><input type="radio" name="q2" value="wrong"> கப்பர்நாகூம்</div>
+      </div>
+      <div class="question">
+        <p>3. பைபிளில் எத்தனை நூல்கள் உள்ளன?</p>
+        <div class="option"><input type="radio" name="q3" value="correct"> 66</div>
+        <div class="option"><input type="radio" name="q3" value="wrong"> 72</div>
+        <div class="option"><input type="radio" name="q3" value="wrong"> 60</div>
+        <div class="option"><input type="radio" name="q3" value="wrong"> 70</div>
+      </div>
+      <div class="question">
+        <p>4. நோவா கப்பலில் எத்தனை பேர் இருந்தனர்?</p>
+        <div class="option"><input type="radio" name="q4" value="correct"> 8</div>
+        <div class="option"><input type="radio" name="q4" value="wrong"> 6</div>
+        <div class="option"><input type="radio" name="q4" value="wrong"> 10</div>
+        <div class="option"><input type="radio" name="q4" value="wrong"> 12</div>
+      </div>
+      <div class="question">
+        <p>5. இயேசு எத்தனை சீடர்களை தேர்ந்தெடுத்தார்?</p>
+        <div class="option"><input type="radio" name="q5" value="correct"> 12</div>
+        <div class="option"><input type="radio" name="q5" value="wrong"> 10</div>
+        <div class="option"><input type="radio" name="q5" value="wrong"> 14</div>
+        <div class="option"><input type="radio" name="q5" value="wrong"> 7</div>
+      </div>
+      <div class="question">
+        <p>6. பைபிளில் யோவான் 3:16 என்ன சொல்லுகிறது?</p>
+        <div class="option"><input type="radio" name="q6" value="correct"> தேவன் உலகத்தை நேசித்தார்</div>
+        <div class="option"><input type="radio" name="q6" value="wrong"> தேவன் மனிதனை தண்டித்தார்</div>
+        <div class="option"><input type="radio" name="q6" value="wrong"> தேவன் சபையை கட்டினார்</div>
+        <div class="option"><input type="radio" name="q6" value="wrong"> தேவன் யூதரை தேர்ந்தெடுத்தார்</div>
+      </div>
+      <div class="question">
+        <p>7. பைபிளில் பெரிய நூல் எது?</p>
+        <div class="option"><input type="radio" name="q7" value="correct"> சங்கீதம்</div>
+        <div class="option"><input type="radio" name="q7" value="wrong"> ஆதியாகமம்</div>
+        <div class="option"><input type="radio" name="q7" value="wrong"> வெளிப்படுத்தல்</div>
+        <div class="option"><input type="radio" name="q7" value="wrong"> யோபு</div>
+      </div>
+      <div class="question">
+        <p>8. இயேசு எத்தனை நாட்கள் உபவாசம் செய்தார்?</p>
+        <div class="option"><input type="radio" name="q8" value="correct"> 40</div>
+        <div class="option"><input type="radio" name="q8" value="wrong"> 30</div>
+        <div class="option"><input type="radio" name="q8" value="wrong"> 20</div>
+        <div class="option"><input type="radio" name="q8" value="wrong"> 10</div>
+      </div>
+      <div class="question">
+        <p>9. பைபிளில் கடைசி புத்தகம் எது?</p>
+        <div class="option"><input type="radio" name="q9" value="correct"> வெளிப்படுத்தல்</div>
+        <div class="option"><input type="radio" name="q9" value="wrong"> யோவான்</div>
+        <div class="option"><input type="radio" name="q9" value="wrong"> ரோமர்</div>
+        <div class="option"><input type="radio" name="q9" value="wrong"> சங்கீதம்</div>
+      </div>
+      <div class="question">
+        <p>10. பைபிளில் “கார்த்தர் என் மேய்ப்பர்” என்று எங்கு வருகிறது?</p>
+        <div class="option"><input type="radio" name="q10" value="correct"> சங்கீதம் 23:1</div>
+        <div class="option"><input type="radio" name="q10" value="wrong"> சங்கீதம் 1:1</div>
+        <div class="option"><input type="radio" name="q10" value="wrong"> யோபு 3:16</div>
+        <div class="option"><input type="radio" name="q10" value="wrong"> யோவான் 10:10</div>
+      </div>
+      <div class="button-row">
+        <button type="button" class="nav-btn" id="prevBtn" onclick="prevQuestion()">முந்தையது</button>
+        <button type="button" class="nav-btn" id="nextBtn" onclick="nextQuestion()">அடுத்தது</button>
+        <button type="button" class="submit-btn" id="submitBtn" onclick="calculateScore()" style="display:none;">முடிக்கவும்</button>
+      </div>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script>
+    let current = 0;
+    const questions = document.querySelectorAll('.question');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function updateProgress() {
+      const percent = ((current + 1) / questions.length) * 100;
+      progressBar.style.width = percent + '%';
+    }
+
+    function showQuestion(index) {
+      questions.forEach((q, i) => {
+        q.classList.toggle('active', i === index);
+      });
+      updateProgress();
+      prevBtn.disabled = (index === 0);
+      if (index === questions.length - 1) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-block';
+      } else {
+        nextBtn.style.display = 'inline-block';
+        submitBtn.style.display = 'none';
+      }
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        showQuestion(current);
+      }
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        showQuestion(current);
+      }
+    }
+
+    function calculateScore() {
+      let score = 0;
+      for (let i = 1; i <= questions.length; i++) {
+        const answer = document.querySelector(`input[name="q${i}"]:checked`);
+        if (answer && answer.value === "correct") {
+          score++;
+        }
+      }
+      document.getElementById('result').textContent = `மொத்த மதிப்பெண்: ${score} / ${questions.length}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Initialize
+    showQuestion(current);
+  </script>
+</body>
+</html>

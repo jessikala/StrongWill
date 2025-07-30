@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <title>பைபிள் வினா - பக்கம் 6</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+      font-family: 'Noto Sans Tamil', 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      margin-top: 32px;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      color: #4fc3f7;
+      text-align: center;
+      text-shadow: 0 2px 8px #0008;
+    }
+    #quizForm {
+      background: rgba(30, 34, 40, 0.98);
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #0006;
+      padding: 32px 24px 24px 24px;
+      margin: 32px 0 16px 0;
+      max-width: 420px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .question {
+      margin-bottom: 28px;
+      padding: 18px 16px 12px 16px;
+      background: #232b36;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0003;
+      font-size: 1.18rem;
+      transition: box-shadow 0.2s;
+    }
+    .question p {
+      margin: 0 0 10px 0;
+      font-size: 1.15rem;
+      color: #4fc3f7;
+      font-weight: 600;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+      accent-color: #4fc3f7;
+      transform: scale(1.2);
+    }
+    label, .question input[type="radio"] + span {
+      font-size: 1.08rem;
+      cursor: pointer;
+    }
+    button {
+      background: #4fc3f7;
+      color: #232526;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 8px 8px 0 0;
+      box-shadow: 0 2px 8px #0002;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    button:hover, button:focus {
+      background: #0288d1;
+      color: #fff;
+      outline: none;
+    }
+    #result {
+      margin-top: 24px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ffd600;
+      text-align: center;
+      text-shadow: 0 2px 8px #0008;
+    }
+    @media (max-width: 600px) {
+      #quizForm {
+        padding: 16px 4vw 16px 4vw;
+        max-width: 98vw;
+      }
+      .question {
+        font-size: 1rem;
+        padding: 12px 6px 8px 6px;
+      }
+      button {
+        font-size: 1rem;
+        padding: 10px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>பைபிள் வினா - பக்கம் 6</h2>
+  <form id="quizForm">
+    <div class="question" style="display:block">
+      <p>1. பைபிளில் “நாகமணி” என்பவர் யார்?</p>
+      <input type="radio" name="q1" value="correct"> ஆவியின் பதிலளிப்பவர்<br>
+      <input type="radio" name="q1" value="wrong"> தீர்க்கதரிசி<br>
+      <input type="radio" name="q1" value="wrong"> பவுலின் சீடன்<br>
+      <input type="radio" name="q1" value="wrong"> ராஜா<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>2. “கர்த்தர் என் கோட்டையாக இருக்கிறார்” - எங்கு வருகிறது?</p>
+      <input type="radio" name="q2" value="correct"> சங்கீதம் 18<br>
+      <input type="radio" name="q2" value="wrong"> யோவான் 3<br>
+      <input type="radio" name="q2" value="wrong"> உபாகமம் 30<br>
+      <input type="radio" name="q2" value="wrong"> மத்தேயு 10<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>3. இயேசு யாரைக் கடலில் நடக்க அனுமதித்தார்?</p>
+      <input type="radio" name="q3" value="correct"> பேதுரு<br>
+      <input type="radio" name="q3" value="wrong"> யாகோபு<br>
+      <input type="radio" name="q3" value="wrong"> திமொத்தேயு<br>
+      <input type="radio" name="q3" value="wrong"> லூகா<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>4. பைபிளில் “யோவான் நலமானவர்” - எங்கு குறிப்பிடப்பட்டுள்ளது?</p>
+      <input type="radio" name="q4" value="correct"> யோவான் 1<br>
+      <input type="radio" name="q4" value="wrong"> மத்திய விலா<br>
+      <input type="radio" name="q4" value="wrong"> ரோமர்<br>
+      <input type="radio" name="q4" value="wrong"> உபாகமம்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>5. இயேசு எப்போது தம் சீடருக்குத் திராட்சரசம் கொடுத்தார்?</p>
+      <input type="radio" name="q5" value="correct"> கடைசி இரவு<br>
+      <input type="radio" name="q5" value="wrong"> ஆரம்ப ஆராதனையில்<br>
+      <input type="radio" name="q5" value="wrong"> பவுலின் திருவிழாவில்<br>
+      <input type="radio" name="q5" value="wrong"> சந்தித்த முதல் நாள்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>6. பைபிளில் “தத்துவஞானம்” புத்தகம் எதற்கு?</p>
+      <input type="radio" name="q6" value="correct"> அறிவும் நடத்தையும்<br>
+      <input type="radio" name="q6" value="wrong"> பாடல்கள்<br>
+      <input type="radio" name="q6" value="wrong"> தீர்க்கதரிசனம்<br>
+      <input type="radio" name="q6" value="wrong"> சீடரின் வாழ்க்கை<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>7. யோசேப்பின் சகோதரர்கள் அவனை எங்கே விற்க திட்டமிட்டனர்?</p>
+      <input type="radio" name="q7" value="correct"> எகிப்து<br>
+      <input type="radio" name="q7" value="wrong"> கானா<br>
+      <input type="radio" name="q7" value="wrong"> யெருசலேம்<br>
+      <input type="radio" name="q7" value="wrong"> சாமாரியா<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>8. பவுல் எங்கு சியாழின் கடிதம் எழுதினார்?</p>
+      <input type="radio" name="q8" value="correct"> சிறை நிலை<br>
+      <input type="radio" name="q8" value="wrong"> திருவிழா<br>
+      <input type="radio" name="q8" value="wrong"> ஆலயம்<br>
+      <input type="radio" name="q8" value="wrong"> பேதுருவின் வீட்டில்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>9. இயேசு பிறந்தபோது எந்த வானியியல் நிகழ்வு நடந்தது?</p>
+      <input type="radio" name="q9" value="correct"> நட்சத்திரம்<br>
+      <input type="radio" name="q9" value="wrong"> சந்திர கிரகணம்<br>
+      <input type="radio" name="q9" value="wrong"> மழை<br>
+      <input type="radio" name="q9" value="wrong"> வெடிப்பு<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>10. “உன்னத இடங்களில் உம்மை உயர்த்துவேன்” - இது எங்கு வருகிறது?</p>
+      <input type="radio" name="q10" value="correct"> உபாகமம்<br>
+      <input type="radio" name="q10" value="wrong"> சங்கீதம்<br>
+      <input type="radio" name="q10" value="wrong"> யோவான்<br>
+      <input type="radio" name="q10" value="wrong"> லேவியர்<br>
+    </div>
+
+    <br>
+    <button type="button" onclick="prevQuestion()">முந்தையது</button>
+    <button type="button" onclick="nextQuestion()">அடுத்தது</button>
+    <button type="button" onclick="calculateScore()">முடிக்கவும்</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    let current = 0;
+    const questions = document.querySelectorAll('.question');
+
+    function showQuestion(index) {
+      questions.forEach((q, i) => {
+        q.style.display = i === index ? 'block' : 'none';
+      });
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        showQuestion(current);
+      }
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        showQuestion(current);
+      }
+    }
+
+    function calculateScore() {
+      let score = 0;
+      for (let i = 1; i <= questions.length; i++) {
+        const answer = document.querySelector(`input[name="q${i}"]:checked`);
+        if (answer && answer.value === "correct") {
+          score++;
+        }
+      }
+      document.getElementById('result').textContent = `மொத்த மதிப்பெண்: ${score} / ${questions.length}`;
+    }
+  </script>
+</body>
+</html>

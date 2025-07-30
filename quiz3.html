@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <title>பைபிள் வினா - பக்கம் 3</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+      font-family: 'Noto Sans Tamil', 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      margin-top: 32px;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      color: #4fc3f7;
+      text-align: center;
+      text-shadow: 0 2px 8px #0008;
+    }
+    #quizForm {
+      background: rgba(30, 34, 40, 0.98);
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #0006;
+      padding: 32px 24px 24px 24px;
+      margin: 32px 0 16px 0;
+      max-width: 420px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .question {
+      margin-bottom: 28px;
+      padding: 18px 16px 12px 16px;
+      background: #232b36;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0003;
+      font-size: 1.18rem;
+      transition: box-shadow 0.2s;
+    }
+    .question p {
+      margin: 0 0 10px 0;
+      font-size: 1.15rem;
+      color: #4fc3f7;
+      font-weight: 600;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+      accent-color: #4fc3f7;
+      transform: scale(1.2);
+    }
+    label, .question input[type="radio"] + span {
+      font-size: 1.08rem;
+      cursor: pointer;
+    }
+    button {
+      background: #4fc3f7;
+      color: #232526;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 8px 8px 0 0;
+      box-shadow: 0 2px 8px #0002;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    button:hover, button:focus {
+      background: #0288d1;
+      color: #fff;
+      outline: none;
+    }
+    #result {
+      margin-top: 24px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ffd600;
+      text-align: center;
+      text-shadow: 0 2px 8px #0008;
+    }
+    @media (max-width: 600px) {
+      #quizForm {
+        padding: 16px 4vw 16px 4vw;
+        max-width: 98vw;
+      }
+      .question {
+        font-size: 1rem;
+        padding: 12px 6px 8px 6px;
+      }
+      button {
+        font-size: 1rem;
+        padding: 10px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>பைபிள் வினா - பக்கம் 3</h2>
+  <form id="quizForm">
+    <div class="question" style="display:block">
+      <p>1. பைபிளில் “மத்தேயு” புத்தகம் எதை கூறுகிறது?</p>
+      <input type="radio" name="q1" value="correct"> இயேசுவின் வாழ்க்கை<br>
+      <input type="radio" name="q1" value="wrong"> தேவ சபையின் வரலாறு<br>
+      <input type="radio" name="q1" value="wrong"> சங்கீதங்கள்<br>
+      <input type="radio" name="q1" value="wrong"> தீர்க்கதரிசனம்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>2. பைபிளில் “சீமான்கள்” யாரைப் பற்றி எழுதுகிறார்கள்?</p>
+      <input type="radio" name="q2" value="correct"> இயேசுவின் சீடர்கள்<br>
+      <input type="radio" name="q2" value="wrong"> தூய ஆவியின் கதைகள்<br>
+      <input type="radio" name="q2" value="wrong"> தேவனின் வர்த்தமைகள்<br>
+      <input type="radio" name="q2" value="wrong"> யோவானின் கவிதைகள்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>3. பைபிளில் “இசாயா” என்பது என்ன வகை?</p>
+      <input type="radio" name="q3" value="correct"> தீர்க்கதரிசி புத்தகம்<br>
+      <input type="radio" name="q3" value="wrong"> வரலாறு<br>
+      <input type="radio" name="q3" value="wrong"> சங்கீதம்<br>
+      <input type="radio" name="q3" value="wrong"> வாழ்வியல்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>4. பைபிளில் “சாமுவேல்” யாரின் வாழ்க்கையை விவரிக்கிறது?</p>
+      <input type="radio" name="q4" value="correct"> தாவீது<br>
+      <input type="radio" name="q4" value="wrong"> பவுல்<br>
+      <input type="radio" name="q4" value="wrong"> ஏசா<br>
+      <input type="radio" name="q4" value="wrong"> லூயி<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>5. இயேசு எத்தனை சீடர்களை தேர்ந்தெடுத்தார்?</p>
+      <input type="radio" name="q5" value="correct"> 12<br>
+      <input type="radio" name="q5" value="wrong"> 10<br>
+      <input type="radio" name="q5" value="wrong"> 7<br>
+      <input type="radio" name="q5" value="wrong"> 14<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>6. “என் குடில் உன்னதத்தின் கீழ் இருக்கிறது” - எது?</p>
+      <input type="radio" name="q6" value="correct"> சங்கீதம்<br>
+      <input type="radio" name="q6" value="wrong"> யோவான்<br>
+      <input type="radio" name="q6" value="wrong"> வசனம்<br>
+      <input type="radio" name="q6" value="wrong"> திருவிவிலியம்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>7. பைபிளில் “தூய ஆவி” முதலில் எங்கு காட்டப்பட்டது?</p>
+      <input type="radio" name="q7" value="correct"> யோவான் நதிக்கரையில்<br>
+      <input type="radio" name="q7" value="wrong"> பெத்லகேம்<br>
+      <input type="radio" name="q7" value="wrong"> யெருசலேம்<br>
+      <input type="radio" name="q7" value="wrong"> கர்மேல் மலை<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>8. இயேசு ஜெயப்பட்ட மரணத்தை எங்கே சந்தித்தார்?</p>
+      <input type="radio" name="q8" value="correct"> கால்வரி கிரி<br>
+      <input type="radio" name="q8" value="wrong"> பெதானியா<br>
+      <input type="radio" name="q8" value="wrong"> கோல்கத்தா<br>
+      <input type="radio" name="q8" value="wrong"> நாசரேத்து<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>9. பைபிளின் கடைசி புத்தகம்?</p>
+      <input type="radio" name="q9" value="correct"> வெளிப்படுத்தல்<br>
+      <input type="radio" name="q9" value="wrong"> மத்திய விலா<br>
+      <input type="radio" name="q9" value="wrong"> யோபு<br>
+      <input type="radio" name="q9" value="wrong"> உபாகமம்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>10. இயேசு எங்கே 5,000 பேர் உணவுடன் உண்ண முடிவுச் செய்தார்?</p>
+      <input type="radio" name="q10" value="correct"> பாலை நிலம்<br>
+      <input type="radio" name="q10" value="wrong"> பெதானியா<br>
+      <input type="radio" name="q10" value="wrong"> நாசரேத்து<br>
+      <input type="radio" name="q10" value="wrong"> காலிலேயா நகரம்<br>
+    </div>
+
+    <br>
+    <button type="button" onclick="prevQuestion()">முந்தையது</button>
+    <button type="button" onclick="nextQuestion()">அடுத்தது</button>
+    <button type="button" onclick="calculateScore()">முடிக்கவும்</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    let current = 0;
+    const questions = document.querySelectorAll('.question');
+
+    function showQuestion(index) {
+      questions.forEach((q, i) => {
+        q.style.display = i === index ? 'block' : 'none';
+      });
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        showQuestion(current);
+      }
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        showQuestion(current);
+      }
+    }
+
+    function calculateScore() {
+      let score = 0;
+      for (let i = 1; i <= questions.length; i++) {
+        const answer = document.querySelector(`input[name="q${i}"]:checked`);
+        if (answer && answer.value === "correct") {
+          score++;
+        }
+      }
+      document.getElementById('result').textContent = `மொத்த மதிப்பெண்: ${score} / ${questions.length}`;
+    }
+  </script>
+</body>
+</html>
