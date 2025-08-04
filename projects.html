@@ -131,7 +131,13 @@
       </nav>
     </header>
     <main>
-      <h2>Project List</h2>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h2 style="margin:0;text-align:left;">List of Project</h2>
+        <a href="#" id="viewCertLink" style="color:#ffd600;text-decoration:underline;cursor:pointer;font-size:1.1rem;">View-Sample-Certificate</a>
+      </div>
+      <div id="certModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,27,75,0.85);z-index:9999;justify-content:center;align-items:flex-start;flex-direction:column;">
+        <img src="assets/StrongWill_Certificate.png" alt="Sample Certificate" style="max-width:90vw;max-height:70vh;margin:40px auto 0 auto;display:block;border-radius:18px;box-shadow:0 4px 32px #0008;" />
+      </div>
       <table>
         <thead>
           <tr>
@@ -165,6 +171,23 @@
     </main>
     <footer>
       <p>&copy; 2025 StrongWill. All rights reserved.</p>
+      <script>
+        const viewCertLink = document.getElementById('viewCertLink');
+        const certModal = document.getElementById('certModal');
+        if(viewCertLink && certModal) {
+          viewCertLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            certModal.style.display = 'flex';
+          });
+          function hideCert() {
+            certModal.style.display = 'none';
+          }
+          certModal.addEventListener('click', hideCert);
+          document.addEventListener('keydown', function(e) {
+            if(e.key === 'Escape') hideCert();
+          });
+        }
+      </script>
     </footer>
   </body>
   </html>
