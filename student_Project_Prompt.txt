@@ -1,0 +1,89 @@
+Here's a comprehensive prompt you can use with another LLM to generate this web page:
+
+Prompt:
+
+Create a complete, professional student projects portal website with the following specifications:
+
+Overall Design:
+
+Modern, vibrant design with gradient backgrounds and glass-morphism effects
+Responsive layout that works on all devices
+Use Tailwind CSS for styling
+Animated elements with smooth transitions and hover effects
+Professional color scheme with blues, purples, and accent colors
+Header Section:
+
+Large animated gradient background with shifting colors
+Main title: "🚀 Student Projects Portal" with pulse animation
+Subtitle: "Explore, Learn, and Build Amazing Projects"
+Glass-effect badge showing "✨ 15 Cutting-Edge Projects Available"
+Navigation Menu:
+
+Sticky navigation with backdrop blur effect
+Four navigation links with unique hover effects:
+📚 Projects (blue-purple gradient hover)
+🏆 Certificate (green-blue gradient hover)
+✍️ Register (purple-pink gradient hover)
+👥 About Us (orange-red gradient hover, links to "about_us.html")
+Each link should have white text on colored gradient background when hovered
+Smooth scaling animation on hover
+Projects Section:
+
+Title: "🎯 Available Projects"
+Descriptive paragraph about the projects
+Three colored badges: "💻 15 Projects", "🚀 Multiple Categories", "⭐ All Skill Levels"
+Professional table with gradient header containing these 15 projects:
+Web Development - E-Placement Portal (80 hrs, Medium)
+Mobile App Development - Fitness Tracker App (100 hrs, Medium)
+Machine Learning - Student Performance ML (120 hrs, High)
+Internet of Things (IoT) - Smart Attendance System (100 hrs, High)
+Data Analytics - Sales Data Dashboard (70 hrs, Medium)
+Cybersecurity - Phishing Detection Tool (90 hrs, High)
+Cloud Computing - Cloud File Storage (100 hrs, High)
+AI & Chatbots - College Help Chatbot (80 hrs, Medium)
+Augmented Reality (AR) - AR Campus Tour (110 hrs, High)
+E-Commerce - Local Vendor Marketplace (90 hrs, Medium)
+Blockchain - Academic Certificate Chain (120 hrs, High)
+Social Media - College Social Hub (90 hrs, Medium)
+Education Tech - Online Quiz Generator (80 hrs, Medium)
+Health Informatics - Smart Health Record App (100 hrs, High)
+Automation - Lab Inventory Management (75 hrs, Medium)
+Table should have hover effects on rows
+Include columns: S.No, Category, Project Name, Description, Duration (hrs), Difficulty
+Difficulty badges: Medium (yellow), High (red)
+Certificate Section:
+
+Title: "🏆 Project Completion Certificate"
+Centered layout with trophy icon
+Three feature badges: "✅ Verified", "📄 Professional", "🌟 Portfolio Ready"
+"View Sample Certificate" button that opens a modal
+Modal should display certificate image with close functionality
+Registration Section:
+
+Title: "✍️ Register for Projects"
+Three feature badges: "🚀 Quick Registration", "📧 Instant Confirmation", "🎯 Project Matching"
+Embedded Google Form: https://docs.google.com/forms/d/e/1FAIpQLSeWZa1o7kQ-KqLddR6Mxd6Zi8osdeHKD1wRkUAyISkwDLFReg/viewform?embedded=true
+Form should be 900px height in a styled container
+Footer:
+
+Dark gradient background
+Portal branding and statistics
+Copyright information
+Technical Requirements:
+
+All buttons and interactions must be fully functional
+Smooth scrolling navigation
+Modal functionality for certificate viewing
+Responsive design
+Professional animations and transitions
+Glass-morphism and gradient effects throughout
+Proper hover states and visual feedback
+Additional Features:
+
+Pulse animations on key elements
+Gradient text effects
+Card shadows and hover scaling
+Backdrop blur effects
+Professional typography and spacing
+Make sure all code is complete, self-contained HTML with inline CSS and JavaScript, and follows modern web development best practices.
+
