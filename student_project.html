@@ -101,153 +101,189 @@
     <main class="container mx-auto px-6 py-8">
         <!-- Projects Section -->
         <section id="projects" class="mb-20">
-            <div class="text-center mb-12">
-                <h2 class="text-5xl font-bold text-gradient mb-6">🎯 Available Student_Projects</h2>
-                <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">Choose from our diverse range of cutting-edge technology projects designed to enhance your skills and build an impressive portfolio.</p>
-                <div class="mt-8 flex justify-center space-x-4">
-                    <span class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-sm font-medium">💻 15 Projects</span>
-                    <span class="px-4 py-2 bg-gradient-to-r from-green-500 to-teal-600 text-white rounded-full text-sm font-medium">🚀 Multiple Categories</span>
-                    <span class="px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-full text-sm font-medium">⭐ All Skill Levels</span>
+            <div class="overflow-x-auto pb-2">
+              <div class="flex space-x-6 min-w-[340px]">
+                <!-- Project Card 1 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">1.</span> <span class="text-sm text-gray-500">Web Development</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">E-Placement Portal</div>
+                    <div class="text-gray-700 text-sm mb-3">A portal to manage campus placements, student profiles, job postings, and interview schedules.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 80 hrs</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold">Medium</span>
+                  </div>
                 </div>
-            </div>
-
-            <div class="bg-white/70 backdrop-blur-sm rounded-2xl card-shadow overflow-hidden border border-white/20 neon-glow">
-                <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
-                            <tr>
-                                <th class="px-6 py-5 text-left text-sm font-bold">🔢 S.No</th>
-                                <th class="px-6 py-5 text-left text-sm font-bold">📂 Category</th>
-                                <th class="px-6 py-5 text-left text-sm font-bold">🚀 Project Name</th>
-                                <th class="px-6 py-5 text-left text-sm font-bold">📝 Description</th>
-                                <th class="px-6 py-5 text-left text-sm font-bold">⏱️ Duration (hrs)</th>
-                                <th class="px-6 py-5 text-left text-sm font-bold">⚡ Difficulty</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">1</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Web Development</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">E-Placement Portal</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A portal to manage campus placements, student profiles, job postings, and interview schedules.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">80</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Medium</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">2</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Mobile App Development</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Fitness Tracker App</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">An app that tracks user steps, calories burned, workout schedules, and health goals with daily reminders.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">100</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Medium</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">3</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Machine Learning</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Student Performance ML</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">Predict student grades based on attendance, internal marks, and participation using machine learning algorithms.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">120</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">High</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">4</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Internet of Things (IoT)</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Smart Attendance System</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">RFID and sensor-based student attendance system integrated with a web dashboard.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">100</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">High</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">5</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Data Analytics</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Sales Data Dashboard</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A dashboard to visualize e-commerce sales data using Power BI or Tableau.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">70</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Medium</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">6</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Cybersecurity</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Phishing Detection Tool</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A browser extension or web-based app that identifies suspicious links or potential phishing emails.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">90</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">High</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">7</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Cloud Computing</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Cloud File Storage</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A mini cloud-based file management system similar to Google Drive using AWS or Firebase.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">100</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">High</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">8</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">AI & Chatbots</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">College Help Chatbot</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A chatbot to answer common college-related queries (fees, timetable, faculty, etc.) using AI frameworks.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">80</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Medium</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">9</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Augmented Reality (AR)</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">AR Campus Tour</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">An AR-based mobile app to guide new students on a virtual tour around the college campus.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">110</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">High</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">10</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">E-Commerce</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Local Vendor Marketplace</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A platform for small vendors to list their products and sell them online, focusing on a specific locality.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">90</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Medium</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">11</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Blockchain</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Academic Certificate Chain</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A blockchain-based academic certificate verification system to avoid forgery.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">120</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">High</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">12</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Social Media</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">College Social Hub</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A closed social media platform for students and faculty to share updates, events, and achievements.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">90</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Medium</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">13</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Education Tech</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Online Quiz Generator</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A tool for teachers to create timed quizzes, auto-grade them, and track student performance.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">80</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Medium</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">14</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Health Informatics</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Smart Health Record App</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">A secure app for storing personal health records and providing doctor appointment management.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">100</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">High</span></td>
-                            </tr>
-                            <tr class="table-hover border-l-4 border-transparent hover:border-blue-400">
-                                <td class="px-6 py-4 text-sm text-gray-900">15</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">Automation</td>
-                                <td class="px-6 py-4 text-sm font-medium text-blue-600">Lab Inventory Management</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">An app for managing lab equipment, issuing items to students, and alerting for refills and repairs.</td>
-                                <td class="px-6 py-4 text-sm text-gray-900">75</td>
-                                <td class="px-6 py-4"><span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Medium</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Project Card 2 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">2.</span> <span class="text-sm text-gray-500">Mobile App Development</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Fitness Tracker App</div>
+                    <div class="text-gray-700 text-sm mb-3">An app that tracks user steps, calories burned, workout schedules, and health goals with daily reminders.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 100 hrs</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold">Medium</span>
+                  </div>
                 </div>
+                <!-- Project Card 3 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">3.</span> <span class="text-sm text-gray-500">Machine Learning</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Student Performance ML</div>
+                    <div class="text-gray-700 text-sm mb-3">Predict student grades based on attendance, internal marks, and participation using machine learning algorithms.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 120 hrs</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold">High</span>
+                  </div>
+                </div>
+                <!-- Project Card 4 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">4.</span> <span class="text-sm text-gray-500">Internet of Things (IoT)</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Smart Attendance System</div>
+                    <div class="text-gray-700 text-sm mb-3">RFID and sensor-based student attendance system integrated with a web dashboard.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 100 hrs</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold">High</span>
+                  </div>
+                </div>
+                <!-- Project Card 5 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">5.</span> <span class="text-sm text-gray-500">Data Analytics</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Sales Data Dashboard</div>
+                    <div class="text-gray-700 text-sm mb-3">A dashboard to visualize e-commerce sales data using Power BI or Tableau.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 70 hrs</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold">Medium</span>
+                  </div>
+                </div>
+                <!-- Project Card 6 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">6.</span> <span class="text-sm text-gray-500">Cybersecurity</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Phishing Detection Tool</div>
+                    <div class="text-gray-700 text-sm mb-3">A browser extension or web-based app that identifies suspicious links or potential phishing emails.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 90 hrs</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold">High</span>
+                  </div>
+                </div>
+                <!-- Project Card 7 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">7.</span> <span class="text-sm text-gray-500">Cloud Computing</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Cloud File Storage</div>
+                    <div class="text-gray-700 text-sm mb-3">A mini cloud-based file management system similar to Google Drive using AWS or Firebase.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 100 hrs</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold">High</span>
+                  </div>
+                </div>
+                <!-- Project Card 8 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">8.</span> <span class="text-sm text-gray-500">AI & Chatbots</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">College Help Chatbot</div>
+                    <div class="text-gray-700 text-sm mb-3">A chatbot to answer common college-related queries (fees, timetable, faculty, etc.) using AI frameworks.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 80 hrs</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold">Medium</span>
+                  </div>
+                </div>
+                <!-- Project Card 9 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">9.</span> <span class="text-sm text-gray-500">Augmented Reality (AR)</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">AR Campus Tour</div>
+                    <div class="text-gray-700 text-sm mb-3">An AR-based mobile app to guide new students on a virtual tour around the college campus.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 110 hrs</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold">High</span>
+                  </div>
+                </div>
+                <!-- Project Card 10 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">10.</span> <span class="text-sm text-gray-500">E-Commerce</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Local Vendor Marketplace</div>
+                    <div class="text-gray-700 text-sm mb-3">A platform for small vendors to list their products and sell them online, focusing on a specific locality.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 90 hrs</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold">Medium</span>
+                  </div>
+                </div>
+                <!-- Project Card 11 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">11.</span> <span class="text-sm text-gray-500">Blockchain</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Academic Certificate Chain</div>
+                    <div class="text-gray-700 text-sm mb-3">A blockchain-based academic certificate verification system to avoid forgery.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 120 hrs</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold">High</span>
+                  </div>
+                </div>
+                <!-- Project Card 12 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">12.</span> <span class="text-sm text-gray-500">Social Media</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">College Social Hub</div>
+                    <div class="text-gray-700 text-sm mb-3">A closed social media platform for students and faculty to share updates, events, and achievements.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 90 hrs</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold">Medium</span>
+                  </div>
+                </div>
+                <!-- Project Card 13 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">13.</span> <span class="text-sm text-gray-500">Education Tech</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Online Quiz Generator</div>
+                    <div class="text-gray-700 text-sm mb-3">A tool for teachers to create timed quizzes, auto-grade them, and track student performance.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 80 hrs</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold">Medium</span>
+                  </div>
+                </div>
+                <!-- Project Card 14 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">14.</span> <span class="text-sm text-gray-500">Health Informatics</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Smart Health Record App</div>
+                    <div class="text-gray-700 text-sm mb-3">A secure app for storing personal health records and providing doctor appointment management.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 100 hrs</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-semibold">High</span>
+                  </div>
+                </div>
+                <!-- Project Card 15 -->
+                <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center mb-2"><span class="font-bold text-indigo-600 mr-2">15.</span> <span class="text-sm text-gray-500">Automation</span></div>
+                    <div class="font-bold text-lg text-blue-700 mb-1">Lab Inventory Management</div>
+                    <div class="text-gray-700 text-sm mb-3">An app for managing lab equipment, issuing items to students, and alerting for refills and repairs.</div>
+                  </div>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">⏱️ 75 hrs</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold">Medium</span>
+                  </div>
+                </div>
+              </div>
             </div>
         </section>
 
