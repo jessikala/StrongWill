@@ -75,26 +75,31 @@
 
     <!-- Navigation -->
     <nav class="bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-center space-x-12 py-6">
-                <a href="#projects" class="group relative px-6 py-2 text-gray-700 hover:text-white font-semibold text-lg transition-all duration-300 transform hover:scale-110">
+        <div class="container mx-auto px-2 sm:px-4">
+            <div class="flex overflow-x-auto no-scrollbar sm:justify-center space-x-4 sm:space-x-12 py-4 sm:py-6 -mx-2 px-2">
+                <a href="#projects" class="group relative min-w-max px-4 sm:px-6 py-2 text-gray-700 hover:text-white font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-110">
                     <span class="relative z-10">📚 Projects</span>
                     <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
-                <a href="#certificate" class="group relative px-6 py-2 text-gray-700 hover:text-white font-semibold text-lg transition-all duration-300 transform hover:scale-110">
+                <a href="#certificate" class="group relative min-w-max px-4 sm:px-6 py-2 text-gray-700 hover:text-white font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-110">
                     <span class="relative z-10">🏆 Certificate</span>
                     <div class="absolute inset-0 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
-                <a href="#registration" class="group relative px-6 py-2 text-gray-700 hover:text-white font-semibold text-lg transition-all duration-300 transform hover:scale-110">
+                <a href="#registration" class="group relative min-w-max px-4 sm:px-6 py-2 text-gray-700 hover:text-white font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-110">
                     <span class="relative z-10">✍️ Register</span>
                     <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
-                <a href="about_us.html" class="group relative px-6 py-2 text-gray-700 hover:text-white font-semibold text-lg transition-all duration-300 transform hover:scale-110">
+                <a href="about_us.html" class="group relative min-w-max px-4 sm:px-6 py-2 text-gray-700 hover:text-white font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-110">
                     <span class="relative z-10">👥 About Us</span>
                     <div class="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-600 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
             </div>
         </div>
+        <style>
+            /* Hide scrollbar for nav on mobile */
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>
     </nav>
 
     <!-- Main Content -->
