@@ -99,6 +99,23 @@
             /* Hide scrollbar for nav on mobile */
             .no-scrollbar::-webkit-scrollbar { display: none; }
             .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            /* Auto-scroll animation for project cards */
+            .auto-scroll-row {
+                animation: auto-scroll-x 40s linear infinite;
+            }
+            .auto-scroll-row:hover,
+            .auto-scroll-row:active,
+            .auto-scroll-row:focus,
+            .auto-scroll-row.scrolling {
+                animation-play-state: paused !important;
+            }
+            @keyframes auto-scroll-x {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+            @media (max-width: 640px) {
+                .auto-scroll-row { animation-duration: 30s; }
+            }
         </style>
     </nav>
 
@@ -107,7 +124,7 @@
         <!-- Projects Section -->
         <section id="projects" class="mb-20">
             <div class="overflow-x-auto pb-2">
-              <div class="flex space-x-6 min-w-[340px]">
+              <div class="flex space-x-6 min-w-[340px] auto-scroll-row">
                 <!-- Project Card 1 -->
                 <div class="min-w-[320px] max-w-xs bg-white rounded-2xl card-shadow neon-glow p-6 flex-shrink-0 flex flex-col justify-between">
                   <div>
@@ -373,6 +390,25 @@
     </footer>
 
     <script>
+        // Auto-scroll pause on user scroll/touch for project cards
+        (function() {
+            const row = document.querySelector('.auto-scroll-row');
+            let isScrolling = false;
+            if (!row) return;
+            // Pause animation on scroll/touch
+            function pauseScroll() {
+                row.classList.add('scrolling');
+                isScrolling = true;
+                clearTimeout(row._scrollTimeout);
+                row._scrollTimeout = setTimeout(() => {
+                    row.classList.remove('scrolling');
+                    isScrolling = false;
+                }, 2000);
+            }
+            row.addEventListener('wheel', pauseScroll, { passive: true });
+            row.addEventListener('touchstart', pauseScroll, { passive: true });
+            row.addEventListener('mousedown', pauseScroll, { passive: true });
+        })();
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
