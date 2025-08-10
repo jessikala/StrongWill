@@ -99,23 +99,6 @@
             /* Hide scrollbar for nav on mobile */
             .no-scrollbar::-webkit-scrollbar { display: none; }
             .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-            /* Auto-scroll animation for project cards */
-            .auto-scroll-row {
-                animation: auto-scroll-x 20s linear infinite;
-            }
-            .auto-scroll-row:hover,
-            .auto-scroll-row:active,
-            .auto-scroll-row:focus,
-            .auto-scroll-row.scrolling {
-                animation-play-state: paused !important;
-            }
-            @keyframes auto-scroll-x {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            @media (max-width: 640px) {
-                .auto-scroll-row { animation-duration: 30s; }
-            }
         </style>
     </nav>
 
@@ -390,24 +373,39 @@
     </footer>
 
     <script>
-        // Auto-scroll pause on user scroll/touch for project cards
+        // Auto-scroll project cards row using scrollLeft so scrollbar moves too
         (function() {
-            const row = document.querySelector('.auto-scroll-row');
-            let isScrolling = false;
-            if (!row) return;
-            // Pause animation on scroll/touch
+            const container = document.querySelector('#projects .overflow-x-auto');
+            let isPaused = false;
+            let scrollSpeed = 1.2; // px per frame, adjust for speed
+            let scrollInterval;
+            if (!container) return;
+            function startScroll() {
+                if (scrollInterval) return;
+                scrollInterval = setInterval(() => {
+                    if (!isPaused) {
+                        // If at end, jump back to start for infinite effect
+                        if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 2) {
+                            container.scrollLeft = 0;
+                        } else {
+                            container.scrollLeft += scrollSpeed;
+                        }
+                    }
+                }, 16); // ~60fps
+            }
             function pauseScroll() {
-                row.classList.add('scrolling');
-                isScrolling = true;
-                clearTimeout(row._scrollTimeout);
-                row._scrollTimeout = setTimeout(() => {
-                    row.classList.remove('scrolling');
-                    isScrolling = false;
+                isPaused = true;
+                clearTimeout(container._scrollTimeout);
+                container._scrollTimeout = setTimeout(() => {
+                    isPaused = false;
                 }, 2000);
             }
-            row.addEventListener('wheel', pauseScroll, { passive: true });
-            row.addEventListener('touchstart', pauseScroll, { passive: true });
-            row.addEventListener('mousedown', pauseScroll, { passive: true });
+            // Pause on user interaction
+            container.addEventListener('wheel', pauseScroll, { passive: true });
+            container.addEventListener('touchstart', pauseScroll, { passive: true });
+            container.addEventListener('mousedown', pauseScroll, { passive: true });
+            // Start auto-scroll
+            startScroll();
         })();
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
