@@ -62,7 +62,6 @@
                 <div class="space-x-4">
                     <button onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Shop Now</button>
                     <button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">Our Services</button>
-                    <a href="service_registration.html" class="inline-block bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-colors">Register Service</a>
                 </div>
             </div>
         </div>
@@ -390,7 +389,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Philip Sewing. All rights reserved. &nbsp; <a href="technician_dashboard.html" class="underline">Technician Dashboard</a></p>
+                <p>&copy; 2024 Philip Sewing. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -420,14 +419,16 @@
             });
         });
 
-        // Add to cart functionality (works by text match)
-        document.querySelectorAll('button').forEach(button => {
-            if (button.textContent && button.textContent.trim().toLowerCase().includes('add to cart')) {
+        // Add to cart functionality
+        document.querySelectorAll('button:contains("Add to Cart")').forEach(button => {
+            if (button.textContent.includes('Add to Cart')) {
                 button.addEventListener('click', function() {
+                    // Simple cart notification
                     const originalText = this.textContent;
                     this.textContent = 'Added!';
                     this.classList.add('bg-green-600');
                     this.classList.remove('bg-purple-600');
+                    
                     setTimeout(() => {
                         this.textContent = originalText;
                         this.classList.remove('bg-green-600');
@@ -437,14 +438,12 @@
             }
         });
 
-        // Contact form submission
-        const contactForm = document.querySelector('form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We\'ll get back to you soon.');
-                this.reset();
-            });
-        }
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            this.reset();
+        });
     </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a1f0d006367ec4',t:'MTc1NDM1MTI1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
