@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technician Dashboard - Philip Sewing Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f7f7f7;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-purple-600 hover:text-purple-700">← Back to Sewing Services</a>
+                </div>
+                <h1 class="text-xl font-semibold text-gray-900">Technician Dashboard</h1>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Service Requests</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200" id="serviceTable">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Problem</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200" id="serviceTableBody">
+                        <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch data from Google Sheet
+        fetch('https://script.google.com/macros/s/AKfycbwUknkXMbmvM8NzIKNp0Bed4DOQmQpxBt5KWTwzrEpEJF2cF_YJ9_959JKPRQaHaNvd/exec?action=get')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('serviceTableBody');
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${new Date(row.timestamp).toLocaleDateString()}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${row.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            <a href="https://wa.me/${row.phone}" class="text-purple-600 hover:text-purple-700">${row.phone}</a>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${row.model}</td>
+                        <td class="px-6 py-4 text-sm text-gray-900">${row.problem}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <select class="text-sm rounded-md border-gray-300" onchange="updateStatus(this, '${row.id}')">
+                                <option value="pending" ${row.status === 'pending' ? 'selected' : ''}>Pending</option>
+                                <option value="in-progress" ${row.status === 'in-progress' ? 'selected' : ''}>In Progress</option>
+                                <option value="completed" ${row.status === 'completed' ? 'selected' : ''}>Completed</option>
+                            </select>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            <button onclick="deleteRequest('${row.id}')" class="text-red-600 hover:text-red-700">Delete</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error loading service requests. Please refresh the page.');
+            });
+
+        function updateStatus(select, id) {
+            const status = select.value;
+            fetch('https://script.google.com/macros/s/AKfycbwUknkXMbmvM8NzIKNp0Bed4DOQmQpxBt5KWTwzrEpEJF2cF_YJ9_959JKPRQaHaNvd/exec', {
+                method: 'POST',
+                body: new URLSearchParams({
+                    'action': 'updateStatus',
+                    'id': id,
+                    'status': status
+                })
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'success') {
+                    select.closest('tr').classList.add('bg-green-50');
+                    setTimeout(() => {
+                        select.closest('tr').classList.remove('bg-green-50');
+                    }, 2000);
+                } else {
+                    alert('Error updating status. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error updating status. Please try again.');
+            });
+        }
+
+        function deleteRequest(id) {
+            if (confirm('Are you sure you want to delete this service request?')) {
+                fetch('https://script.google.com/macros/s/AKfycbwUknkXMbmvM8NzIKNp0Bed4DOQmQpxBt5KWTwzrEpEJF2cF_YJ9_959JKPRQaHaNvd/exec', {
+                    method: 'POST',
+                    body: new URLSearchParams({
+                        'action': 'delete',
+                        'id': id
+                    })
+                })
+                .then(response => response.text())
+                .then(result => {
+                    if (result === 'success') {
+                        location.reload();
+                    } else {
+                        alert('Error deleting request. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error deleting request. Please try again.');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
