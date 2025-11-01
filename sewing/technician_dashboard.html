@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Technician Dashboard - StrongWill</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px;background:#f4f6f8}
+    .wrap{max-width:980px;margin:20px auto;background:#fff;padding:18px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+    .alert{background:#e3f2fd;border:1px solid #90caf9;padding:16px;margin:12px 0;border-radius:4px}
+    .btn{display:inline-block;padding:8px 16px;background:#1976d2;color:#fff;text-decoration:none;border-radius:4px;margin-top:12px}
+    .btn:hover{background:#1565c0}
+    code{background:#f5f5f5;padding:2px 6px;border-radius:3px;font-family:monospace}
+    h1{margin-top:0}
+    p{line-height:1.5}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Technician Dashboard</h1>
+    
+    <div class="alert">
+      <h3>⚠️ Important: Access the Live Dashboard</h3>
+      <p>
+        This page has been replaced with a direct web app dashboard that doesn't require any setup or configuration.
+        To access the live dashboard:
+      </p>
+      <ol>
+        <p>1. Go to your Google Apps Script web app URL and add <code>?view=dashboard</code></p>
+        <p>2. Example: <code>https://script.google.com/macros/s/AKfycbwPFEhBaq0-fPDvkQGtgN5GZD90TGxmqDPLNBBC6PCPrG2toHLFjxmsVmArlUSy4uYmZA/exec?view=dashboard</code></p>
+      </ol>
+      <p>
+        The live dashboard allows you to:
+        - View all service requests
+        - Filter by status
+        - Update status and add notes
+        - Message customers via WhatsApp
+      </p>
+      <a href="https://script.google.com/macros/s/AKfycbwUknkXMbmvM8NzIKNp0Bed4DOQmQpxBt5KWTwzrEpEJF2cF_YJ9_959JKPRQaHaNvd/exec" class="btn">Open Live Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>
+
+      if (!filtered.length) { document.getElementById('tableWrap').innerHTML = '<div class="note">No complaints found.</div>'; return; }
+
+      const html = [];
+      html.push('<table><thead><tr><th>ID</th><th>Name</th><th>Phone</th><th>Model</th><th>Problem</th><th>Address</th><th>Preferred</th><th>Status</th><th>Actions</th></tr></thead><tbody>');
+
+      filtered.forEach(r => {
+        html.push(`<tr data-id="${r.row}">`);
+        html.push(`<td>${r.row}</td>`);
+        html.push(`<td>${escapeHtml(r.name)}</td>`);
+        html.push(`<td>${escapeHtml(r.phone)}</td>`);
+        html.push(`<td>${escapeHtml(r.model)}</td>`);
+        html.push(`<td>${escapeHtml(r.problem)}</td>`);
+        html.push(`<td>${escapeHtml(r.address)}</td>`);
+        html.push(`<td>${escapeHtml(r.preferred_time)}</td>`);
+        html.push(`<td><select class="statusSelect"><option>planned</option><option>in-progress</option><option>completed</option></select></td>`);
+        html.push(`<td class="actions"><button class="saveBtn">Save</button> <a target="_blank" href="https://wa.me/${encodeURIComponent(r.phone||'')}?text=${encodeURIComponent('Service update for ID '+r.row)}">WhatsApp</a></td>`);
+        html.push('</tr>');
+      });
+
+      html.push('</tbody></table>');
+      document.getElementById('tableWrap').innerHTML = html.join('');
+
+      // set selects to current status
+      document.querySelectorAll('tr[data-id]').forEach(tr => {
+        const row = tr.getAttribute('data-id');
+        const r = rows.find(x=>String(x.row)===String(row));
+        const sel = tr.querySelector('.statusSelect');
+        if (r && sel) sel.value = r.status || 'planned';
+      });
+
+      // wire save buttons
+      document.querySelectorAll('.saveBtn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          const tr = e.target.closest('tr');
+          const row = tr.getAttribute('data-id');
+          const status = tr.querySelector('.statusSelect').value;
+          await updateStatus(row, status);
+        });
+      });
+    }
+
+    async function updateStatus(row, status) {
+      const payload = { action: 'update', row: row, status: status };
+      try {
+        const res = await fetch(SCRIPT_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+        const json = await res.json();
+        if (json.success) { alert('Updated row '+row); fetchComplaints(); }
+        else alert('Update failed: '+(json.error||'unknown'));
+      } catch (err) { alert('Network error'); }
+    }
+
+    function escapeHtml(s){ if (!s) return ''; return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[c]); }
+
+    document.getElementById('refresh').addEventListener('click', fetchComplaints);
+    document.getElementById('filterStatus').addEventListener('change', fetchComplaints);
+    fetchComplaints();
+  </script>
+</body>
+</html>

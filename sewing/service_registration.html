@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>StrongWill - Sewing Service Registration</title>
+	<style>
+		body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px;background:#f7f7f7}
+		.container{max-width:720px;margin:24px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+		h1{margin-top:0}
+		label{display:block;margin-top:12px;font-weight:600}
+		input,textarea,select{width:100%;padding:10px;margin-top:6px;border:1px solid #ddd;border-radius:4px}
+		button{margin-top:14px;padding:10px 14px;border:0;background:#0078d4;color:#fff;border-radius:4px;cursor:pointer}
+		.small{font-size:0.9rem;color:#555}
+		.success{background:#e6ffed;border:1px solid #b6f0c8;padding:10px;margin-top:12px;border-radius:4px}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Register your sewing machine problem</h1>
+		<p class="small">Please provide details below and we'll notify our technician. After successful registration you'll see a WhatsApp link you can tap to message the service team.</p>
+
+			<form id="regForm" action="https://script.google.com/macros/s/AKfycbwUknkXMbmvM8NzIKNp0Bed4DOQmQpxBt5KWTwzrEpEJF2cF_YJ9_959JKPRQaHaNvd/exec" method="POST">
+				<input type="hidden" name="action" value="add" />
+				<label for="name">Name</label>
+				<input id="name" name="name" required />
+
+				<label for="phone">Phone number (with country code, e.g. +91xxxxxxxxxx)</label>
+				<input id="phone" name="phone" required pattern="^\+?\d{7,15}$" />
+
+				<label for="model">Machine Model</label>
+				<input id="model" name="model" required />
+
+				<label for="problem">Problem description</label>
+				<textarea id="problem" name="problem" rows="4" required></textarea>
+
+				<label for="address">Address (optional)</label>
+				<input id="address" name="address" />
+
+				<label for="preferred_time">Preferred visit time (optional)</label>
+				<input id="preferred_time" name="preferred_time" placeholder="e.g. mornings, 3-6pm" />
+
+				<button type="submit">Submit registration</button>
+			</form>
+
+			<p class="small">After submitting, you will be redirected to WhatsApp to contact our service team.</p>
