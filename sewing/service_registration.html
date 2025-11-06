@@ -1,46 +1,150 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title>StrongWill - Sewing Service Registration</title>
-	<style>
-		body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px;background:#f7f7f7}
-		.container{max-width:720px;margin:24px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-		h1{margin-top:0}
-		label{display:block;margin-top:12px;font-weight:600}
-		input,textarea,select{width:100%;padding:10px;margin-top:6px;border:1px solid #ddd;border-radius:4px}
-		button{margin-top:14px;padding:10px 14px;border:0;background:#0078d4;color:#fff;border-radius:4px;cursor:pointer}
-		.small{font-size:0.9rem;color:#555}
-		.success{background:#e6ffed;border:1px solid #b6f0c8;padding:10px;margin-top:12px;border-radius:4px}
-	</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StrongWill - Sewing Service Registration</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f0fff4, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 100%;
+      max-width: 700px;
+      background: #fff;
+      padding: 28px 32px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 12px;
+      width: 140px;
+    }
+    h1 {
+      margin-top: 0;
+      color: #2e7d32;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #fdfdfd;
+    }
+    textarea { resize: vertical; }
+    button {
+      margin-top: 20px;
+      padding: 12px 16px;
+      width: 100%;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.1s ease;
+    }
+    button:hover {
+      background: #256628;
+      transform: translateY(-1px);
+    }
+    .small {
+      font-size: 0.9rem;
+      color: #666;
+      text-align: center;
+      margin-top: 12px;
+    }
+    .success {
+      background: #e6ffed;
+      border: 1px solid #b6f0c8;
+      padding: 10px;
+      margin-top: 12px;
+      border-radius: 4px;
+      text-align: center;
+      color: #0f5132;
+    }
+    .phone-field {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phone-prefix {
+      background: #e9f5ec;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+    .phone-input {
+      flex: 1;
+    }
+  </style>
 </head>
 <body>
-	<div class="container">
-		<h1>Register your sewing machine problem</h1>
-		<p class="small">Please provide details below and we'll notify our technician. After successful registration you'll see a WhatsApp link you can tap to message the service team.</p>
+  <div class="container">
+    <img src="../assets/StrongWill_logo.png" alt="StrongWill Logo" class="logo">
+    <h1>Sewing Machine Service Registration</h1>
+    <p class="small">Please fill in your details below. Our technician will contact you shortly after submission.</p>
 
-			<form id="regForm" action="https://script.google.com/macros/s/AKfycbwUknkXMbmvM8NzIKNp0Bed4DOQmQpxBt5KWTwzrEpEJF2cF_YJ9_959JKPRQaHaNvd/exec" method="POST">
-				<input type="hidden" name="action" value="add" />
-				<label for="name">Name</label>
-				<input id="name" name="name" required />
+    <form id="regForm" action="https://script.google.com/macros/s/AKfycbwUknkXMbmvM8NzIKNp0Bed4DOQmQpxBt5KWTwzrEpEJF2cF_YJ9_959JKPRQaHaNvd/exec" method="POST">
+      <input type="hidden" name="action" value="add" />
 
-				<label for="phone">Phone number (with country code, e.g. +91xxxxxxxxxx)</label>
-				<input id="phone" name="phone" required pattern="^\+?\d{7,15}$" />
+      <label for="name">Name</label>
+      <input id="name" name="name" required placeholder="Enter your full name" />
 
-				<label for="model">Machine Model</label>
-				<input id="model" name="model" required />
+      <label for="phone">Phone Number</label>
+      <div class="phone-field">
+        <span class="phone-prefix">+91</span>
+        <input id="phone" name="phone" class="phone-input" type="tel" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit number" />
+      </div>
+      <small style="color:#666;font-size:0.85rem;">Enter 10-digit mobile number (India only)</small>
 
-				<label for="problem">Problem description</label>
-				<textarea id="problem" name="problem" rows="4" required></textarea>
+      <label for="model">Machine Model</label>
+      <input id="model" name="model" required placeholder="e.g., Usha Janome Dream Stitch" />
 
-				<label for="address">Address (optional)</label>
-				<input id="address" name="address" />
+      <label for="problem">Problem Description</label>
+      <textarea id="problem" name="problem" rows="4" required placeholder="Describe the issue you’re facing"></textarea>
 
-				<label for="preferred_time">Preferred visit time (optional)</label>
-				<input id="preferred_time" name="preferred_time" placeholder="e.g. mornings, 3-6pm" />
+      <label for="address">Address (optional)</label>
+      <input id="address" name="address" placeholder="Your service location" />
 
-				<button type="submit">Submit registration</button>
-			</form>
+      <label for="preferred_time">Preferred Visit Time (optional)</label>
+      <input id="preferred_time" name="preferred_time" placeholder="e.g., mornings, 3–6 PM" />
 
-			<p class="small">After submitting, you will be redirected to WhatsApp to contact our service team.</p>
+      <button type="submit">Submit Registration</button>
+    </form>
+
+    <p class="small">After submitting, you will be redirected to WhatsApp to contact our service team.</p>
+  </div>
+
+  <script>
+    // Automatically prepend +91 when form submits
+    document.getElementById("regForm").addEventListener("submit", function() {
+      const phoneInput = document.getElementById("phone");
+      if (!phoneInput.value.startsWith("+91")) {
+        phoneInput.value = "+91" + phoneInput.value;
+      }
+    });
+  </script>
+</body>
+</html>
