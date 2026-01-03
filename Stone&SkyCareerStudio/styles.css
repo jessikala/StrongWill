@@ -1,0 +1,49 @@
+:root{
+  --bg:#000; --muted:#ccc; --accent:#ff6b35; --white:#fff; --container:1100px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:var(--white); line-height:1.5}
+.container{max-width:var(--container); margin:0 auto; padding:28px}
+.site-header{background:#111; border-bottom:1px solid #333}
+.site-header .container{display:flex; align-items:center; justify-content:space-between}
+.logo{height:60px; width:auto; max-width:250px; object-fit:contain}
+.logo-text{margin-left:10px; font-size:2.5rem; color:var(--white); font-weight: bold}
+nav a{margin-left:18px; color:var(--muted); text-decoration:none}
+nav a.cta{background:var(--accent); color:var(--white); padding:8px 12px; border-radius:8px}
+.hero{padding:56px 0; text-align:center}
+.hero h2{font-size:3rem; margin:0 0 8px; font-weight: bold}
+.lead{color:var(--muted); max-width:780px; margin:0 auto 18px}
+.btn{display:inline-block; padding:10px 16px; border-radius:8px; background:#eef2ff; color:var(--accent); text-decoration:none}
+.btn.primary{background:var(--accent); color:var(--white)}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:18px}
+.stats{text-align:center; padding:40px 0}
+.stat{font-size:2rem; font-weight:bold; margin:20px 0}
+.card{background:#111; padding:18px; border-radius:10px; box-shadow:0 1px 4px rgba(255,255,255,.1)}
+.event-card{background:#111; padding:18px; border-radius:8px}
+.booking{display:block}
+.booking-actions a{margin-right:12px}
+.faq .accordion{margin-top:10px}
+.acc-item{width:100%; text-align:left; background:#111; border:0; padding:14px 16px; margin-bottom:6px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; color:var(--accent)}
+.acc-panel{display:none; padding:10px 14px 18px; color:var(--white); background:#222; border-radius:8px; margin-top:6px}
+.testimonials blockquote{background:#111; padding:14px; border-radius:8px; margin:10px 0}
+.site-footer{padding:18px 0; text-align:center; color:var(--muted)}
+
+/* Chat widget */
+.chat-widget{position:fixed; right:18px; bottom:18px; z-index:999}
+.chat-open{background:var(--accent); color:var(--white); border:0; padding:10px 14px; border-radius:999px}
+.chat-box{width:320px; max-width:90vw; height:420px; background:#111; border-radius:10px; box-shadow:0 8px 28px rgba(255,255,255,.12); flex-direction:column; overflow:hidden; margin-top:10px; display:none}
+.chat-header{padding:12px; background:#222; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center}
+.chat-log{padding:12px; overflow:auto; flex:1; font-size:.95rem}
+.chat-form{display:flex; padding:8px; border-top:1px solid #f1f5f9}
+.chat-form input{flex:1; padding:8px; border-radius:8px; border:1px solid #e6eef6}
+.chat-form button{margin-left:8px; background:var(--accent); color:white; border:0; padding:8px 12px; border-radius:8px}
+
+@media (max-width:720px){
+  .site-header .container{padding:12px; flex-direction:column; align-items:center}
+  .hero h2{font-size:2rem}
+  .stat{font-size:1.5rem}
+  .logo-text{font-size:1.5rem}
+  h1{display:flex; flex-direction:column; align-items:center; margin:0}
+  nav{display:flex; justify-content:center; margin-top:10px}
+  nav a{margin:0 10px}
+}
