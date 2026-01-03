@@ -37,3 +37,14 @@ button {
   border: none;
   cursor: pointer;
 }
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.main-title {
+  margin: 0;
+}
