@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StrongWill - Sewing Service Registration</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px;background:#f7f7f7}
+    .container{max-width:720px;margin:24px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+    h1{margin-top:0}
+    label{display:block;margin-top:12px;font-weight:600}
+    input,textarea,select{width:100%;padding:10px;margin-top:6px;border:1px solid #ddd;border-radius:4px}
+    button{margin-top:14px;padding:10px 14px;border:0;background:#0078d4;color:#fff;border-radius:4px;cursor:pointer}
+    .small{font-size:0.9rem;color:#555}
+    .success{background:#e6ffed;border:1px solid #b6f0c8;padding:10px;margin-top:12px;border-radius:4px}
+    .logo{display:block;margin:0 auto 16px auto;width:140px}
+    .phone-input{display:flex;align-items:center}
+    .phone-input span{background:#eee;padding:10px 12px;border:1px solid #ddd;border-radius:4px 0 0 4px}
+    .phone-input input{flex:1;border-radius:0 4px 4px 0;border-left:0}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="./assets/StrongWill_logo.png" alt="StrongWill Logo" class="logo">
+    <h1>Register your sewing machine problem</h1>
+    <p class="small">Please provide details below and we'll notify our technician. After successful registration you'll see a WhatsApp link you can tap to message the service team.</p>
+
+    <form id="regForm">
+      <input type="hidden" name="action" value="add" />
+
+      <label for="name">Name</label>
+      <input id="name" name="name" required />
+
+      <label for="phone">Phone number</label>
+      <div class="phone-input">
+        <span>+91</span>
+        <input id="phone" name="phone" required pattern="^\d{10}$" placeholder="10-digit number only" />
+      </div>
+
+      <label for="model">Machine Model</label>
+      <input id="model" name="model" required />
+
+      <label for="problem">Problem description</label>
+      <textarea id="problem" name="problem" rows="4" required></textarea>
+
+      <label for="address">Address (optional)</label>
+      <input id="address" name="address" />
+
+      <label for="preferred_time">Preferred visit time (optional)</label>
+      <input id="preferred_time" name="preferred_time" placeholder="e.g. mornings, 3–6pm" />
+
+      <button type="submit">Submit registration</button>
+    </form>
+
+    <p class="small">After submitting, you will be redirected to WhatsApp to contact our service team.</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('regForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      // Combine +91 prefix
+      const phoneValue = '+91' + formData.get('phone');
+      formData.set('phone', phoneValue);
+
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwUknkXMbmvM8NzIKNp0Bed4DOQmQpxBt5KWTwzrEpEJF2cF_YJ9_959JKPRQaHaNvd/exec';
+      try {
+        const res = await fetch(scriptURL, { method: 'POST', body: formData });
+        if (res.ok) {
+          window.location.href = 'thankyou.html';
+        } else {
+          alert('There was a problem submitting the form. Please try again.');
+        }
+      } catch (err) {
+        alert('Network error. Please check your connection and try again.');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <title>பைபிள் வினா - பக்கம் 4</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+      font-family: 'Noto Sans Tamil', 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      margin-top: 32px;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      color: #4fc3f7;
+      text-align: center;
+      text-shadow: 0 2px 8px #0008;
+    }
+    #quizForm {
+      background: rgba(30, 34, 40, 0.98);
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #0006;
+      padding: 32px 24px 24px 24px;
+      margin: 32px 0 16px 0;
+      max-width: 420px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .question {
+      margin-bottom: 28px;
+      padding: 18px 16px 12px 16px;
+      background: #232b36;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0003;
+      font-size: 1.18rem;
+      transition: box-shadow 0.2s;
+    }
+    .question p {
+      margin: 0 0 10px 0;
+      font-size: 1.15rem;
+      color: #4fc3f7;
+      font-weight: 600;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+      accent-color: #4fc3f7;
+      transform: scale(1.2);
+    }
+    label, .question input[type="radio"] + span {
+      font-size: 1.08rem;
+      cursor: pointer;
+    }
+    button {
+      background: #4fc3f7;
+      color: #232526;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 8px 8px 0 0;
+      box-shadow: 0 2px 8px #0002;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    button:hover, button:focus {
+      background: #0288d1;
+      color: #fff;
+      outline: none;
+    }
+    #result {
+      margin-top: 24px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ffd600;
+      text-align: center;
+      text-shadow: 0 2px 8px #0008;
+    }
+    @media (max-width: 600px) {
+      #quizForm {
+        padding: 16px 4vw 16px 4vw;
+        max-width: 98vw;
+      }
+      .question {
+        font-size: 1rem;
+        padding: 12px 6px 8px 6px;
+      }
+      button {
+        font-size: 1rem;
+        padding: 10px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>பைபிள் வினா - பக்கம் 4</h2>
+  <form id="quizForm">
+    <div class="question" style="display:block">
+      <p>1. யோசுவா பைபிளில் என்ன நூலை முன்னிலை செய்கிறார்?</p>
+      <input type="radio" name="q1" value="correct"> யுத்தம் மற்றும் வழிகாட்டுதல்<br>
+      <input type="radio" name="q1" value="wrong"> சங்கீதங்கள்<br>
+      <input type="radio" name="q1" value="wrong"> நபிகளின் சொற்கள்<br>
+      <input type="radio" name="q1" value="wrong"> பவுலின் கடிதங்கள்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>2. “என் கண்கள் உம்மை நோக்கி பார்க்கின்றன” - இது எங்கு வருகிறது?</p>
+      <input type="radio" name="q2" value="correct"> சங்கீதம்<br>
+      <input type="radio" name="q2" value="wrong"> யோவான்<br>
+      <input type="radio" name="q2" value="wrong"> உபாகமம்<br>
+      <input type="radio" name="q2" value="wrong"> தீர்க்கதரிசி<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>3. இயேசு பேச்சாளர் ஆவியாக அறிமுகப்படுத்தப்படுவது எதில்?</p>
+      <input type="radio" name="q3" value="correct"> மத்தேயு 5<br>
+      <input type="radio" name="q3" value="wrong"> உபாகமம் 10<br>
+      <input type="radio" name="q3" value="wrong"> யோபு 1<br>
+      <input type="radio" name="q3" value="wrong"> லேவியர் 3<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>4. பைபிளில் “அருசலேம்” எங்கு முக்கிய பங்கு வகிக்கிறது?</p>
+      <input type="radio" name="q4" value="correct"> தேவ வழிபாட்டின் மையம்<br>
+      <input type="radio" name="q4" value="wrong"> கடைசியில் அழிக்கப்படும் இடம்<br>
+      <input type="radio" name="q4" value="wrong"> வியாபாரம்<br>
+      <input type="radio" name="q4" value="wrong"> சிதைவடைந்த நகரம்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>5. யோவான் 1:1 வசனம் எதை கூறுகிறது?</p>
+      <input type="radio" name="q5" value="correct"> துவக்கத்தில் வார்த்தை இருந்தது<br>
+      <input type="radio" name="q5" value="wrong"> கடவுள் மனிதனாகிவிட்டார்<br>
+      <input type="radio" name="q5" value="wrong"> தேவ ஆசீர்வாதம்<br>
+      <input type="radio" name="q5" value="wrong"> உயிரின் உருவாக்கம்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>6. “மண்ணின் உப்பாக இருங்கள்” - இயேசு எப்போது சொன்னார்?</p>
+      <input type="radio" name="q6" value="correct"> சர்மோன் றான் மவுண்ட்<br>
+      <input type="radio" name="q6" value="wrong"> கடலுக்கு பக்கமாக<br>
+      <input type="radio" name="q6" value="wrong"> வெள்ளி வாயிலில்<br>
+      <input type="radio" name="q6" value="wrong"> திருவிழாவில்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>7. பைபிளில் “நீதிபதிகள்” புத்தகத்தின் பொருள்?</p>
+      <input type="radio" name="q7" value="correct"> பழைய இஸ்ரவேலின் தலைவர்கள்<br>
+      <input type="radio" name="q7" value="wrong"> சட்டங்கள்<br>
+      <input type="radio" name="q7" value="wrong"> பாராபட்சங்கள்<br>
+      <input type="radio" name="q7" value="wrong"> பாடல்கள்<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>8. இயேசு இயலாமை கொண்டவர்களை நலமடைத்த இடம்?</p>
+      <input type="radio" name="q8" value="correct"> பெத்சதா குளம்<br>
+      <input type="radio" name="q8" value="wrong"> பெத்லகேம்<br>
+      <input type="radio" name="q8" value="wrong"> எரிகோ<br>
+      <input type="radio" name="q8" value="wrong"> நாசரேத்து<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>9. “தந்தையை மதிக்கும் மகன்” - இது எங்கு வருகிறது?</p>
+      <input type="radio" name="q9" value="correct"> உபாகமம்<br>
+      <input type="radio" name="q9" value="wrong"> சங்கீதம்<br>
+      <input type="radio" name="q9" value="wrong"> யோபு<br>
+      <input type="radio" name="q9" value="wrong"> மத்திய விலா<br>
+    </div>
+
+    <div class="question" style="display:none">
+      <p>10. “தூய ஆவியானவர்” முதலில் யார் மேல் வந்து வாழ்ந்தார்?</p>
+      <input type="radio" name="q10" value="correct"> இயேசு<br>
+      <input type="radio" name="q10" value="wrong"> பேதுரு<br>
+      <input type="radio" name="q10" value="wrong"> பவுல்<br>
+      <input type="radio" name="q10" value="wrong"> லூகா<br>
+    </div>
+
+    <br>
+    <button type="button" onclick="prevQuestion()">முந்தையது</button>
+    <button type="button" onclick="nextQuestion()">அடுத்தது</button>
+    <button type="button" onclick="calculateScore()">முடிக்கவும்</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    let current = 0;
+    const questions = document.querySelectorAll('.question');
+
+    function showQuestion(index) {
+      questions.forEach((q, i) => {
+        q.style.display = i === index ? 'block' : 'none';
+      });
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        showQuestion(current);
+      }
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        showQuestion(current);
+      }
+    }
+
+    function calculateScore() {
+      let score = 0;
+      for (let i = 1; i <= questions.length; i++) {
+        const answer = document.querySelector(`input[name="q${i}"]:checked`);
+        if (answer && answer.value === "correct") {
+          score++;
+        }
+      }
+      document.getElementById('result').textContent = `மொத்த மதிப்பெண்: ${score} / ${questions.length}`;
+    }
+  </script>
+</body>
+</html>

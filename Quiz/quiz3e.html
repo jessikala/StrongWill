@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bible Quiz - Page 3</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      margin-top: 32px;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      color: #4fc3f7;
+      text-align: center;
+      text-shadow: 0 2px 8px #0008;
+    }
+    #quizForm {
+      background: rgba(30, 34, 40, 0.98);
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #0006;
+      padding: 32px 24px 24px 24px;
+      margin: 32px 0 16px 0;
+      max-width: 420px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .question {
+      margin-bottom: 28px;
+      padding: 18px 16px 12px 16px;
+      background: #232b36;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0003;
+      font-size: 1.18rem;
+      transition: box-shadow 0.2s;
+    }
+    .question p {
+      margin: 0 0 10px 0;
+      font-size: 1.15rem;
+      color: #4fc3f7;
+      font-weight: 600;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+      accent-color: #4fc3f7;
+      transform: scale(1.2);
+    }
+    label, .question input[type="radio"] + span {
+      font-size: 1.08rem;
+      cursor: pointer;
+    }
+    button {
+      background: #4fc3f7;
+      color: #232526;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 8px 8px 0 0;
+      box-shadow: 0 2px 8px #0002;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    button:hover, button:focus {
+      background: #0288d1;
+      color: #fff;
+      outline: none;
+    }
+    #result {
+      margin-top: 24px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ffd600;
+      text-align: center;
+      text-shadow: 0 2px 8px #0008;
+    }
+    @media (max-width: 600px) {
+      #quizForm {
+        padding: 16px 4vw 16px 4vw;
+        max-width: 98vw;
+      }
+      .question {
+        font-size: 1rem;
+        padding: 12px 6px 8px 6px;
+      }
+      button {
+        font-size: 1rem;
+        padding: 10px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Bible Quiz - Page 3</h2>
+  <form id="quizForm">
+    <div class="question" style="display:block">
+      <p>1. What does the book of Matthew describe?</p>
+      <input type="radio" name="q1" value="correct"> The life of Jesus<br>
+      <input type="radio" name="q1" value="wrong"> History of the church<br>
+      <input type="radio" name="q1" value="wrong"> Psalms<br>
+      <input type="radio" name="q1" value="wrong"> Prophecy<br>
+    </div>
+    <div class="question" style="display:none">
+      <p>2. Who do the Gospels write about?</p>
+      <input type="radio" name="q2" value="correct"> Disciples of Jesus<br>
+      <input type="radio" name="q2" value="wrong"> Stories of the Holy Spirit<br>
+      <input type="radio" name="q2" value="wrong"> Messages of God<br>
+      <input type="radio" name="q2" value="wrong"> Poems of John<br>
+    </div>
+    <div class="question" style="display:none">
+      <p>3. What type of book is Isaiah?</p>
+      <input type="radio" name="q3" value="correct"> Prophetic book<br>
+      <input type="radio" name="q3" value="wrong"> History<br>
+      <input type="radio" name="q3" value="wrong"> Psalm<br>
+      <input type="radio" name="q3" value="wrong"> Wisdom<br>
+    </div>
+    <div class="question" style="display:none">
+      <p>4. Whose life is described in the book of Samuel?</p>
+      <input type="radio" name="q4" value="correct"> David<br>
+      <input type="radio" name="q4" value="wrong"> Paul<br>
+      <input type="radio" name="q4" value="wrong"> Asa<br>
+      <input type="radio" name="q4" value="wrong"> Louis<br>
+    </div>
+    <div class="question" style="display:none">
+      <p>5. How many disciples did Jesus choose?</p>
+      <input type="radio" name="q5" value="correct"> 12<br>
+      <input type="radio" name="q5" value="wrong"> 10<br>
+      <input type="radio" name="q5" value="wrong"> 7<br>
+      <input type="radio" name="q5" value="wrong"> 14<br>
+    </div>
+    <div class="question" style="display:none">
+      <p>6. "My tent is under the Most High" - which book?</p>
+      <input type="radio" name="q6" value="correct"> Psalms<br>
+      <input type="radio" name="q6" value="wrong"> John<br>
+      <input type="radio" name="q6" value="wrong"> Verse<br>
+      <input type="radio" name="q6" value="wrong"> Bible<br>
+    </div>
+    <div class="question" style="display:none">
+      <p>7. Where is the Holy Spirit first shown in the Bible?</p>
+      <input type="radio" name="q7" value="correct"> At the Jordan River<br>
+      <input type="radio" name="q7" value="wrong"> Bethlehem<br>
+      <input type="radio" name="q7" value="wrong"> Jerusalem<br>
+      <input type="radio" name="q7" value="wrong"> Mount Carmel<br>
+    </div>
+    <div class="question" style="display:none">
+      <p>8. Where did Jesus face a victorious death?</p>
+      <input type="radio" name="q8" value="correct"> Calvary Hill<br>
+      <input type="radio" name="q8" value="wrong"> Bethany<br>
+      <input type="radio" name="q8" value="wrong"> Golgotha<br>
+      <input type="radio" name="q8" value="wrong"> Nazareth<br>
+    </div>
+    <div class="question" style="display:none">
+      <p>9. What is the last book of the Bible?</p>
+      <input type="radio" name="q9" value="correct"> Revelation<br>
+      <input type="radio" name="q9" value="wrong"> Romans<br>
+      <input type="radio" name="q9" value="wrong"> Job<br>
+      <input type="radio" name="q9" value="wrong"> Deuteronomy<br>
+    </div>
+    <div class="question" style="display:none">
+      <p>10. Where did Jesus feed 5,000 people?</p>
+      <input type="radio" name="q10" value="correct"> Wilderness<br>
+      <input type="radio" name="q10" value="wrong"> Bethany<br>
+      <input type="radio" name="q10" value="wrong"> Nazareth<br>
+      <input type="radio" name="q10" value="wrong"> Galilee City<br>
+    </div>
+    <br>
+    <button type="button" onclick="prevQuestion()">Previous</button>
+    <button type="button" onclick="nextQuestion()">Next</button>
+    <button type="button" onclick="calculateScore()">Finish</button>
+  </form>
+  <div id="result"></div>
+  <script>
+    let current = 0;
+    const questions = document.querySelectorAll('.question');
+    function showQuestion(index) {
+      questions.forEach((q, i) => {
+        q.style.display = i === index ? 'block' : 'none';
+      });
+    }
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        showQuestion(current);
+      }
+    }
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        showQuestion(current);
+      }
+    }
+    function calculateScore() {
+      let score = 0;
+      for (let i = 1; i <= questions.length; i++) {
+        const answer = document.querySelector(`input[name="q${i}"]:checked`);
+        if (answer && answer.value === "correct") {
+          score++;
+        }
+      }
+      document.getElementById('result').textContent = `Total Score: ${score} / ${questions.length}`;
+    }
+  </script>
+</body>
+</html>

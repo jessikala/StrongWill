@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <title>பைபிள் வினாடி வினா</title>
+  <style>
+    body {
+      font-family: 'Latha', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(120deg, #e0eafc 0%, #a5b4fc 100%);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-size: 2.16rem;
+    }
+    header {
+      background: #312e81;
+      color: #fff;
+      padding: 1.2rem 0 0.7rem 0;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(49,46,129,0.10);
+      border-bottom: 2px solid #6366f1;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 4.2rem;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      color: #a5b4fc;
+      text-shadow: 0 2px 8px #312e81;
+    }
+    .quiz-container {
+      max-width: 600px;
+      margin: 40px auto 30px auto;
+      background: rgba(255,255,255,0.98);
+      padding: 32px 22px 28px 22px;
+      border-radius: 1.2rem;
+      box-shadow: 0 6px 32px rgba(99,102,241,0.13);
+      border: 1.5px solid #6366f1;
+    }
+    h2 {
+      text-align: center;
+      color: #312e81;
+      margin-bottom: 1.2rem;
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .progress-bar {
+      width: 100%;
+      background: #e0eafc;
+      border-radius: 8px;
+      margin-bottom: 1.2rem;
+      height: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px #a5b4fc33;
+    }
+    .progress {
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1 0%, #4a90e2 100%);
+      width: 0%;
+      transition: width 0.4s;
+    }
+    .question {
+      display: none;
+      margin-bottom: 1.2rem;
+      background: #f0f4ff;
+      border-radius: 0.7rem;
+      padding: 1.1rem 1rem 0.7rem 1rem;
+      box-shadow: 0 1px 6px #a5b4fc22;
+      border: 1px solid #a5b4fc44;
+    }
+    .question.active {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .option {
+      margin: 20px 0;
+      font-size: 2.16rem;
+      color: #312e81;
+      padding-left: 8px;
+    }
+    .option input[type="radio"] {
+      accent-color: #6366f1;
+      margin-right: 8px;
+    }
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+    button {
+      padding: 20px 44px;
+      font-size: 2.16rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 1px 4px #a5b4fc33;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-btn {
+      background-color: #6366f1;
+      color: #fff;
+    }
+    .nav-btn:disabled {
+      background: #bfc9f7;
+      color: #fff;
+      cursor: not-allowed;
+    }
+    .submit-btn {
+      background-color: #28a745;
+      color: #fff;
+    }
+    #result {
+      margin-top: 24px;
+      font-weight: bold;
+      text-align: center;
+      color: #d63384;
+      font-size: 2.36rem;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 700px) {
+      body {
+        font-size: 1.1rem;
+      }
+      header h1 {
+        font-size: 2.1rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      .option {
+        font-size: 1.1rem;
+      }
+      button {
+        font-size: 1.1rem;
+        padding: 10px 22px;
+      }
+      #result {
+        font-size: 1.18rem;
+      }
+      .quiz-container {
+        padding: 12px 2px 12px 2px;
+      }
+      .question {
+        padding: 0.7rem 0.2rem 0.5rem 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>பைபிள் வினாடி வினா</h1>
+  </header>
+  <div class="quiz-container">
+    <div class="progress-bar"><div class="progress" id="progressBar"></div></div>
+    <form id="quizForm">
+      <div class="question active">
+        <p>1. நோவா கப்பலில் எத்தனை பேர் இருந்தனர்?</p>
+        <div class="option"><input type="radio" name="q1" value="wrong"> 4</div>
+        <div class="option"><input type="radio" name="q1" value="wrong"> 6</div>
+        <div class="option"><input type="radio" name="q1" value="correct"> 8</div>
+        <div class="option"><input type="radio" name="q1" value="wrong"> 10</div>
+      </div>
+      <div class="question">
+        <p>2. இயேசு எத்தனை சீடர்களை தேர்ந்தெடுத்தார்?</p>
+        <div class="option"><input type="radio" name="q2" value="wrong"> 10</div>
+        <div class="option"><input type="radio" name="q2" value="correct"> 12</div>
+        <div class="option"><input type="radio" name="q2" value="wrong"> 14</div>
+        <div class="option"><input type="radio" name="q2" value="wrong"> 7</div>
+      </div>
+      <div class="question">
+        <p>3. பைபிளில் முதல் புத்தகம் எது?</p>
+        <div class="option"><input type="radio" name="q3" value="correct"> ஆதியாகமம்</div>
+        <div class="option"><input type="radio" name="q3" value="wrong"> யாத்திராகமம்</div>
+        <div class="option"><input type="radio" name="q3" value="wrong"> லேவியராகமம்</div>
+        <div class="option"><input type="radio" name="q3" value="wrong"> எண்ணாகமம்</div>
+      </div>
+      <div class="question">
+        <p>4. இயேசு எங்கே பிறந்தார்?</p>
+        <div class="option"><input type="radio" name="q4" value="wrong"> நாசரேத்து</div>
+        <div class="option"><input type="radio" name="q4" value="correct"> பெத்லகேம்</div>
+        <div class="option"><input type="radio" name="q4" value="wrong"> எருசலேம்</div>
+        <div class="option"><input type="radio" name="q4" value="wrong"> கப்பர்நாகூம்</div>
+      </div>
+      <div class="question">
+        <p>5. பைபிளில் எத்தனை நூல்கள் உள்ளன?</p>
+        <div class="option"><input type="radio" name="q5" value="wrong"> 50</div>
+        <div class="option"><input type="radio" name="q5" value="wrong"> 60</div>
+        <div class="option"><input type="radio" name="q5" value="correct"> 66</div>
+        <div class="option"><input type="radio" name="q5" value="wrong"> 70</div>
+      </div>
+      <div class="button-row">
+        <button type="button" class="nav-btn" id="prevBtn" onclick="prevQuestion()">முந்தையது</button>
+        <button type="button" class="nav-btn" id="nextBtn" onclick="nextQuestion()">அடுத்தது</button>
+        <button type="button" class="submit-btn" onclick="calculateScore()">முடிக்கவும்</button>
+      </div>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    let current = 0;
+    const questions = document.querySelectorAll('.question');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateProgress() {
+      const percent = ((current + 1) / questions.length) * 100;
+      progressBar.style.width = percent + '%';
+    }
+
+    function showQuestion(index) {
+      questions.forEach((q, i) => {
+        q.classList.toggle('active', i === index);
+      });
+      updateProgress();
+      prevBtn.disabled = (index === 0);
+      nextBtn.disabled = (index === questions.length - 1);
+    }
+
+    function nextQuestion() {
+      if (current < questions.length - 1) {
+        current++;
+        showQuestion(current);
+      }
+    }
+
+    function prevQuestion() {
+      if (current > 0) {
+        current--;
+        showQuestion(current);
+      }
+    }
+
+    function calculateScore() {
+      let score = 0;
+      for (let i = 1; i <= questions.length; i++) {
+        const answer = document.querySelector(`input[name="q${i}"]:checked`);
+        if (answer && answer.value === "correct") {
+          score++;
+        }
+      }
+      document.getElementById('result').textContent = `மொத்த மதிப்பெண்: ${score} / ${questions.length}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Initialize
+    showQuestion(current);
+  </script>
+</body>
+</html>
