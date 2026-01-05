@@ -6,6 +6,59 @@
   <title>Biblical Eschatology | Christian Faith</title>
 
   <style>
+    
+    #chatToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ffd700;
+  color: #000;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 9999;
+}
+
+.chatbot.hidden {
+  display: none;
+}
+
+.chatbot {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 330px;
+  max-width: 90%;
+  background: #fff;
+  color: #000;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  z-index: 9999;
+}
+
+.suggestions button {
+  margin: 4px 0;
+  width: 100%;
+  background: #2a5298;
+  color: white;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.suggestions button:hover {
+  background: #1e3c72;
+}
+
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -122,6 +175,9 @@
   </style>
 </head>
 
+<script src="eschatology-content.js"></script>
+<script src="chatbot.js"></script>
+
 <body>
 
 <header>
@@ -193,7 +249,10 @@
     <p>
       Watch Bible-based teachings on Eschatology:
       <br />
-      👉 <a href="YOUR_YOUTUBE_LINK" target="_blank">Visit YouTube Channel</a>
+      👉 <a href="https://youtu.be/tYDhIhMaWnI?si=17_xAgq9QV7bOrBq" target="_blank">
+  Watch Eschatology Teaching on YouTube
+</a>
+
     </p>
   </div>
 
@@ -210,14 +269,30 @@
   </div>
 </section>
 
-<!-- Chatbot -->
-<div class="chatbot">
-  <div class="chat-header">📖 Bible Chat</div>
-  <div class="chat-body" id="chatBody">
-    <p><strong>Bot:</strong> Peace be with you 🙏 Ask me about Biblical Eschatology.</p>
+<!-- Chatbot Toggle Button -->
+<div id="chatToggle" onclick="toggleChat()">📖</div>
+
+<!-- Chatbot Window -->
+<div class="chatbot hidden" id="chatbot">
+  <div class="chat-header" onclick="toggleChat()">
+    📖 Bible Chat | வேதாகம உரையாடல்
   </div>
+
+  <div class="chat-body" id="chatBody">
+    <p><strong>Bot:</strong> Peace be with you 🙏<br/>Ask about Biblical Eschatology.</p>
+
+    <div class="suggestions">
+      <p><strong>Try asking:</strong></p>
+      <button onclick="quickAsk('What are the signs of last days?')">Signs of last days</button>
+      <button onclick="quickAsk('Explain rapture')">Rapture</button>
+      <button onclick="quickAsk('Second coming of Jesus')">Second Coming</button>
+      <button onclick="quickAsk('கடைசி கால அறிகுறிகள் என்ன?')">கடைசி கால அறிகுறிகள்</button>
+      <button onclick="quickAsk('இயேசுவின் மறுவருகை')">இயேசுவின் மறுவருகை</button>
+    </div>
+  </div>
+
   <div class="chat-input">
-    <input type="text" id="userInput" placeholder="Ask about end times..." />
+    <input type="text" id="userInput" placeholder="Ask about end times / கேளுங்கள்..." />
     <button onclick="sendMessage()">Send</button>
   </div>
 </div>
