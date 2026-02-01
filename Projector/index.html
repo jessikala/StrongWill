@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Infotec | Premium Projector Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('easy.jpg');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; color: white; text-align: center;
+        }
+        .service-card { border: none; transition: transform 0.3s; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; height: 100%; }
+        .service-card:hover { transform: translateY(-10px); }
+        .icon-box { font-size: 2.5rem; color: #007bff; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section id="home" class="hero">
+        <div class="container" data-aos="zoom-in">
+            <h1 class="display-3 fw-bold mb-4">Clarity in Every Frame</h1>
+            <p class="lead mb-5">Pondicherry's trusted partner for Sony Projector Sales & Service.</p>
+            <a href="#contact" class="btn btn-primary btn-lg rounded-pill px-5">Get a Quote</a>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="fw-bold">Our Services</h2>
+                <div class="bg-primary mx-auto" style="height: 3px; width: 60px;"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card service-card p-4 text-center">
+                        <div class="icon-box"><i class="fas fa-shopping-cart"></i></div>
+                        <h4>Sales</h4>
+                        <p class="text-muted small">Authorized Sony Dealer.</p>
+                        <a href="sales.html" class="stretched-link"></a>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-card p-4 text-center">
+                        <div class="icon-box"><i class="fas fa-tools"></i></div>
+                        <h4>Repair</h4>
+                        <p class="text-muted small">Expert chip-level service.</p>
+                        <a href="service.html" class="stretched-link"></a>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-card p-4 text-center">
+                        <div class="icon-box"><i class="fas fa-calendar-alt"></i></div>
+                        <h4>Rental</h4>
+                        <p class="text-muted small">Events & Meetings.</p>
+                        <a href="rental.html" class="stretched-link"></a>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card service-card p-4 text-center">
+                        <div class="icon-box"><i class="fas fa-desktop"></i></div>
+                        <h4>Installation</h4>
+                        <p class="text-muted small">Professional Mounting.</p>
+                        <a href="installation.html" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <h2 class="fw-bold">Get In Touch</h2>
+                    <p>Fill out the form and our team will contact you shortly.</p>
+                </div>
+                <div class="col-md-6">
+                    <form class="p-4 bg-white shadow-sm rounded">
+                        <input type="text" class="form-control mb-3" placeholder="Name" required>
+                        <input type="email" class="form-control mb-3" placeholder="Email" required>
+                        <textarea class="form-control mb-3" rows="4" placeholder="How can we help?"></textarea>
+                        <button class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        $(function(){ 
+            $("#header-placeholder").load("header.html"); 
+            $("#footer-placeholder").load("footer.html"); 
+        });
+    </script>
+</body>
+</html>
