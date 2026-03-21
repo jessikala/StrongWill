@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test POST to Google Sheets</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; text-align: center; }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .button-group { display: flex; gap: 12px; flex-wrap: wrap; }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            flex: 1;
+            min-width: 200px;
+        }
+        button:hover { transform: translateY(-2px); }
+        button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        button.success { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        button.danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-size: 14px;
+            font-family: monospace;
+            margin-bottom: 12px;
+        }
+        .result {
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-family: monospace;
+            font-size: 14px;
+            word-wrap: break-word;
+        }
+        .success { background: rgba(52, 211, 153, 0.2); border: 2px solid #34d399; }
+        .error { background: rgba(239, 68, 68, 0.2); border: 2px solid #ef4444; }
+        .info { background: rgba(59, 130, 246, 0.2); border: 2px solid #3b82f6; }
+        .warning { background: rgba(251, 191, 36, 0.2); border: 2px solid #fbbf24; }
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-top: 8px;
+        }
+        .step {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .status { 
+            display: inline-block; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .status-pending { background: #fbbf24; color: #000; }
+        .status-success { background: #34d399; color: #000; }
+        .status-error { background: #ef4444; color: #fff; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📨 Test POST Request to Google Sheets</h1>
+        
+        <div class="card">
+            <h2 style="margin-bottom: 16px;">Your Apps Script URL</h2>
+            <input 
+                type="text" 
+                id="url" 
+                placeholder="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec"
+                value="https://script.google.com/macros/s/AKfycbwJz3dEenkV58OBtx84-LVx4EWeCK-JADW1tvwi8AUb0Tws5WOpQdQSC-G1gDSSkcOT/exec"
+            >
+        </div>
+
+        <div class="card">
+            <h2 style="margin-bottom: 16px;">Test Booking Data</h2>
+            <div class="grid">
+                <div>
+                    <label>Name:</label>
+                    <input type="text" id="name" value="Test User" placeholder="Name">
+                </div>
+                <div>
+                    <label>Email:</label>
+                    <input type="text" id="email" value="test@example.com" placeholder="Email">
+                </div>
+            </div>
+            <div class="grid">
+                <div>
+                    <label>Phone:</label>
+                    <input type="text" id="phone" value="+91-1234567890" placeholder="Phone">
+                </div>
+                <div>
+                    <label>Event Type:</label>
+                    <input type="text" id="eventType" value="Concert" placeholder="Event Type">
+                </div>
+            </div>
+            <div class="grid">
+                <div>
+                    <label>Venue:</label>
+                    <input type="text" id="venue" value="Test Venue, Chennai" placeholder="Venue">
+                </div>
+                <div>
+                    <label>Attendees:</label>
+                    <input type="text" id="attendees" value="0-50" placeholder="Attendees">
+                </div>
+            </div>
+            <label>Budget:</label>
+            <input type="text" id="budget" value="₹50,000" placeholder="Budget">
+            <label>Requirements:</label>
+            <textarea id="requirements" rows="3" placeholder="Requirements">This is a test booking - can be deleted</textarea>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-bottom: 16px;">Actions</h2>
+            <div class="button-group">
+                <button onclick="sendTestPOST()" class="success">
+                    📤 Send Test Booking to Google Sheets
+                </button>
+                <button onclick="checkSheet()">
+                    📊 Open Google Sheet
+                </button>
+                <button onclick="testGET()">
+                    📥 Test GET (Read Bookings)
+                </button>
+            </div>
+        </div>
+
+        <div id="results"></div>
+
+        <div class="card">
+            <h2 style="margin-bottom: 16px;">📋 Instructions</h2>
+            
+            <div class="step">
+                <strong>1️⃣ Enter your Apps Script URL above</strong>
+                <p style="margin-top: 8px; opacity: 0.9;">
+                    Get it from: Google Sheet → Extensions → Apps Script → Deploy → Manage deployments
+                </p>
+            </div>
+
+            <div class="step">
+                <strong>2️⃣ Click "Send Test Booking to Google Sheets"</strong>
+                <p style="margin-top: 8px; opacity: 0.9;">
+                    This will send a POST request with the test data
+                </p>
+            </div>
+
+            <div class="step">
+                <strong>3️⃣ Click "Open Google Sheet"</strong>
+                <p style="margin-top: 8px; opacity: 0.9;">
+                    Check if a new row appeared with your test booking
+                </p>
+            </div>
+
+            <div class="step">
+                <strong>4️⃣ If no row appears:</strong>
+                <ul style="margin-top: 8px; margin-left: 20px; opacity: 0.9;">
+                    <li>Check Apps Script → Executions (clock icon on left)</li>
+                    <li>Look for errors in the execution log</li>
+                    <li>Make sure "Who has access" is set to "Anyone"</li>
+                    <li>Try creating a NEW deployment</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-bottom: 16px;">❓ Troubleshooting</h2>
+            
+            <details style="margin-bottom: 12px;">
+                <summary style="cursor: pointer; font-weight: 600; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                    ❌ Request sent but no row in Google Sheets
+                </summary>
+                <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                    <strong>Check Apps Script Executions:</strong>
+                    <ol style="margin-left: 20px; margin-top: 8px;">
+                        <li>Open Apps Script editor</li>
+                        <li>Click "Executions" (clock icon) on left sidebar</li>
+                        <li>Look for recent executions</li>
+                        <li>If you see errors, click to view details</li>
+                        <li>Common error: "Cannot read property 'postData'" = Wrong deployment type</li>
+                    </ol>
+                    <strong style="display: block; margin-top: 12px;">Solution:</strong>
+                    <p style="margin-top: 4px;">Create a NEW deployment as "Web app" (not API executable)</p>
+                </div>
+            </details>
+
+            <details style="margin-bottom: 12px;">
+                <summary style="cursor: pointer; font-weight: 600; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                    ❌ Failed to fetch / CORS error
+                </summary>
+                <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                    <strong>This is normal for POST requests!</strong>
+                    <p style="margin-top: 8px;">
+                        Due to CORS restrictions, POST requests return an "opaque" response.
+                        This doesn't mean it failed - check Google Sheets directly.
+                    </p>
+                    <strong style="display: block; margin-top: 12px;">What to check:</strong>
+                    <ul style="margin-left: 20px; margin-top: 4px;">
+                        <li>Open your Google Sheet and refresh</li>
+                        <li>Check Apps Script Executions log</li>
+                        <li>If execution ran successfully, the data was saved</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary style="cursor: pointer; font-weight: 600; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                    ❌ No executions showing in Apps Script
+                </summary>
+                <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                    <strong>Request isn't reaching your script</strong>
+                    <p style="margin-top: 8px;">Possible causes:</p>
+                    <ul style="margin-left: 20px; margin-top: 4px;">
+                        <li>Wrong URL</li>
+                        <li>Deployment not set to "Anyone"</li>
+                        <li>Deployment is inactive/archived</li>
+                        <li>Old deployment URL (create NEW deployment)</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <script>
+        function getURL() {
+            return document.getElementById('url').value.trim();
+        }
+
+        function getFormData() {
+            return {
+                id: 'TEST-' + Date.now(),
+                timestamp: new Date().toISOString(),
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                eventType: document.getElementById('eventType').value,
+                eventDate: new Date().toLocaleString('en-US'),
+                venue: document.getElementById('venue').value,
+                attendees: document.getElementById('attendees').value,
+                budget: document.getElementById('budget').value,
+                requirements: document.getElementById('requirements').value,
+                status: 'pending'
+            };
+        }
+
+        function showResult(type, title, message, details) {
+            const resultsDiv = document.getElementById('results');
+            let html = `
+                <div class="card">
+                    <div class="result ${type}">
+                        <strong>${title}</strong>
+                        <p style="margin-top: 8px;">${message}</p>
+            `;
+            
+            if (details) {
+                html += `
+                    <details style="margin-top: 12px;">
+                        <summary style="cursor: pointer; color: ${type === 'success' ? '#34d399' : '#ef4444'};">
+                            View Details
+                        </summary>
+                        <pre>${JSON.stringify(details, null, 2)}</pre>
+                    </details>
+                `;
+            }
+            
+            html += `</div></div>`;
+            resultsDiv.innerHTML = html;
+        }
+
+        async function sendTestPOST() {
+            const url = getURL();
+            if (!url) {
+                showResult('error', '❌ Error', 'Please enter your Apps Script URL first');
+                return;
+            }
+
+            const bookingData = getFormData();
+            
+            showResult('info', '⏳ Sending...', 'Sending test booking to Google Sheets...', bookingData);
+
+            try {
+                // Send POST request
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain',
+                    },
+                    body: JSON.stringify(bookingData)
+                });
+
+                console.log('POST Response:', response);
+                console.log('Response type:', response.type);
+                console.log('Response status:', response.status);
+
+                // Note: Due to CORS, we can't read the response body
+                if (response.type === 'opaque' || response.ok) {
+                    showResult(
+                        'success',
+                        '✅ Request Sent!',
+                        `
+                            POST request completed. Due to CORS restrictions, we can't verify the response.<br><br>
+                            <strong>Next steps:</strong><br>
+                            1. Click "Open Google Sheet" button below<br>
+                            2. Refresh the sheet (F5)<br>
+                            3. Check if a new row appeared with booking ID: <code>${bookingData.id}</code><br><br>
+                            <strong>Also check:</strong><br>
+                            • Apps Script → Executions (clock icon) to see if it ran<br>
+                            • Look for any errors in the execution log
+                        `,
+                        {
+                            sent: bookingData,
+                            responseType: response.type,
+                            responseStatus: response.status,
+                            note: 'If execution appears in Apps Script and shows success, the data was saved!'
+                        }
+                    );
+                } else {
+                    showResult(
+                        'warning',
+                        '⚠️ Unexpected Response',
+                        `Response status: ${response.status}. Check Apps Script execution log.`,
+                        {
+                            status: response.status,
+                            statusText: response.statusText,
+                            type: response.type
+                        }
+                    );
+                }
+
+            } catch (error) {
+                console.error('POST Error:', error);
+                showResult(
+                    'error',
+                    '❌ Request Failed',
+                    `
+                        Error: ${error.message}<br><br>
+                        <strong>Common causes:</strong><br>
+                        • Wrong URL<br>
+                        • Deployment not accessible (check "Who has access" = "Anyone")<br>
+                        • Deployment doesn't exist<br><br>
+                        <strong>Try:</strong><br>
+                        1. Test the URL in browser (click "Test GET" button)<br>
+                        2. Create a NEW deployment in Apps Script<br>
+                        3. Make sure "Who has access" is set to "Anyone"
+                    `,
+                    { error: error.toString() }
+                );
+            }
+        }
+
+        async function testGET() {
+            const url = getURL();
+            if (!url) {
+                showResult('error', '❌ Error', 'Please enter your Apps Script URL first');
+                return;
+            }
+
+            showResult('info', '⏳ Testing...', 'Testing GET request (read bookings)...');
+
+            try {
+                const response = await fetch(url);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult(
+                        'success',
+                        '✅ GET Request Successful',
+                        `Found ${data.bookings?.length || 0} bookings in Google Sheets`,
+                        data
+                    );
+                } else {
+                    showResult(
+                        'error',
+                        `❌ HTTP Error ${response.status}`,
+                        response.statusText,
+                        { status: response.status, statusText: response.statusText }
+                    );
+                }
+            } catch (error) {
+                showResult(
+                    'error',
+                    '❌ Failed to fetch',
+                    'Cannot connect to your Apps Script. Check deployment settings.',
+                    { error: error.toString() }
+                );
+            }
+        }
+
+        function checkSheet() {
+            window.open('https://docs.google.com/spreadsheets/d/15FXo9G4cTrOzmtY0js2ufgKYuN_nhspAQ6bhlPqWR1Q/edit', '_blank');
+            showResult(
+                'info',
+                '📊 Google Sheet Opened',
+                'Your Google Sheet has been opened in a new tab. Refresh it (F5) to see the latest data.'
+            );
+        }
+    </script>
+</body>
+</html>

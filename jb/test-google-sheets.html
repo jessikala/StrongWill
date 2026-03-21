@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets Connection Test</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .input-group {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-size: 14px;
+            font-family: monospace;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #fff;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 12px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .result {
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-family: monospace;
+            font-size: 14px;
+            word-wrap: break-word;
+        }
+        .success {
+            background: rgba(52, 211, 153, 0.2);
+            border: 2px solid #34d399;
+        }
+        .error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
+        }
+        .info {
+            background: rgba(59, 130, 246, 0.2);
+            border: 2px solid #3b82f6;
+        }
+        .warning {
+            background: rgba(251, 191, 36, 0.2);
+            border: 2px solid #fbbf24;
+        }
+        .step {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-top: 8px;
+        }
+        .hidden { display: none; }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-pending { background: #fbbf24; }
+        .status-success { background: #34d399; }
+        .status-error { background: #ef4444; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Google Sheets Connection Test</h1>
+        
+        <div class="card">
+            <h2 style="margin-bottom: 16px;">Step 1: Enter Your Web App URL</h2>
+            <div class="input-group">
+                <label for="url">Google Apps Script Web App URL:</label>
+                <input 
+                    type="text" 
+                    id="url" 
+                    placeholder="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec"
+                    value="https://script.google.com/macros/s/AKfycbwJz3dEenkV58OBtx84-LVx4EWeCK-JADW1tvwi8AUb0Tws5WOpQdQSC-G1gDSSkcOT/exec"
+                >
+            </div>
+            <button onclick="testURL()">🧪 Test Connection</button>
+            <button onclick="openInBrowser()" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                🌐 Open URL in Browser (Manual Test)
+            </button>
+        </div>
+
+        <div id="results"></div>
+
+        <div class="card">
+            <h2 style="margin-bottom: 16px;">📋 How to Fix "Failed to fetch"</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Open Google Apps Script</strong>
+                <p style="margin-left: 40px; margin-top: 8px;">
+                    Go to your Google Sheet → Extensions → Apps Script
+                </p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Click "Deploy" → "Manage deployments"</strong>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Click the Edit button (pencil icon)</strong>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Set "Who has access" to "Anyone"</strong>
+                <p style="margin-left: 40px; margin-top: 8px; color: #fbbf24;">
+                    ⚠️ This is the most common issue! It must be "Anyone", not "Only myself" or "Anyone with Google Account"
+                </p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Click "Deploy"</strong>
+            </div>
+
+            <div class="step">
+                <span class="step-number">6</span>
+                <strong>Authorize if prompted</strong>
+                <p style="margin-left: 40px; margin-top: 8px;">
+                    Click "Authorize access" → Select your account → Advanced → "Go to [project name] (unsafe)" → Allow
+                </p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">7</span>
+                <strong>Copy the Web App URL and paste it above</strong>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-bottom: 16px;">✅ What You Should See</h2>
+            <p style="margin-bottom: 12px;">When the URL is working correctly, you should see:</p>
+            <pre>{"success": true, "bookings": [...]}</pre>
+            <p style="margin-top: 12px; color: #34d399;">✅ If you see this, your Google Sheets integration is working!</p>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-bottom: 16px;">❌ Common Errors</h2>
+            
+            <div style="margin-bottom: 16px;">
+                <strong style="color: #ef4444;">Error: "Failed to fetch"</strong>
+                <p style="margin-left: 20px; margin-top: 4px;">
+                    → Deployment access is not set to "Anyone"<br>
+                    → Wrong URL or deployment doesn't exist<br>
+                    → Deployment is archived/inactive
+                </p>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <strong style="color: #ef4444;">Error: "Authorization required" or "Access denied"</strong>
+                <p style="margin-left: 20px; margin-top: 4px;">
+                    → Set "Who has access" to "Anyone"<br>
+                    → Re-authorize the script
+                </p>
+            </div>
+
+            <div>
+                <strong style="color: #ef4444;">Error: 404 Not Found</strong>
+                <p style="margin-left: 20px; margin-top: 4px;">
+                    → Wrong URL<br>
+                    → Deployment was deleted<br>
+                    → Copy the URL again from Apps Script
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getURL() {
+            return document.getElementById('url').value.trim();
+        }
+
+        function openInBrowser() {
+            const url = getURL();
+            if (!url) {
+                showResult('error', 'Please enter a URL first');
+                return;
+            }
+            window.open(url, '_blank');
+            showResult('info', 'Opened URL in new tab. You should see JSON data like: {"success":true,"bookings":[...]}');
+        }
+
+        async function testURL() {
+            const url = getURL();
+            const resultsDiv = document.getElementById('results');
+            
+            if (!url) {
+                showResult('error', 'Please enter your Google Apps Script URL');
+                return;
+            }
+
+            resultsDiv.innerHTML = '<div class="card"><h3>Running Tests...</h3></div>';
+
+            // Test 1: URL Format
+            let html = '<div class="card"><h3>Test Results</h3>';
+            
+            if (!url.includes('script.google.com/macros/s/') || !url.endsWith('/exec')) {
+                html += `
+                    <div class="result error">
+                        <span class="status-indicator status-error"></span>
+                        <strong>❌ Invalid URL Format</strong>
+                        <p style="margin-top: 8px;">URL should look like:</p>
+                        <pre>https://script.google.com/macros/s/YOUR_ID/exec</pre>
+                    </div>
+                `;
+                resultsDiv.innerHTML = html + '</div>';
+                return;
+            } else {
+                html += `
+                    <div class="result success">
+                        <span class="status-indicator status-success"></span>
+                        <strong>✅ URL Format is Correct</strong>
+                    </div>
+                `;
+            }
+
+            // Test 2: Connection Test
+            html += `
+                <div class="result info">
+                    <span class="status-indicator status-pending"></span>
+                    <strong>⏳ Testing Connection...</strong>
+                </div>
+            `;
+            resultsDiv.innerHTML = html + '</div>';
+
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    redirect: 'follow'
+                });
+
+                console.log('Response:', response);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Data:', data);
+
+                    if (data.success) {
+                        html += `
+                            <div class="result success">
+                                <span class="status-indicator status-success"></span>
+                                <strong>✅ Connection Successful!</strong>
+                                <p style="margin-top: 8px;">Found ${data.bookings?.length || 0} bookings</p>
+                                <details style="margin-top: 12px;">
+                                    <summary style="cursor: pointer; color: #34d399;">View Response Data</summary>
+                                    <pre style="margin-top: 8px;">${JSON.stringify(data, null, 2)}</pre>
+                                </details>
+                                <div class="result success" style="margin-top: 16px; background: rgba(52, 211, 153, 0.3);">
+                                    <strong>🎉 Your Google Sheets integration is working!</strong>
+                                    <p style="margin-top: 8px;">You can now update your code with this URL:</p>
+                                    <pre style="margin-top: 8px;">${url}</pre>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        html += `
+                            <div class="result warning">
+                                <span class="status-indicator status-error"></span>
+                                <strong>⚠️ Unexpected Response</strong>
+                                <pre style="margin-top: 8px;">${JSON.stringify(data, null, 2)}</pre>
+                            </div>
+                        `;
+                    }
+                } else {
+                    html += `
+                        <div class="result error">
+                            <span class="status-indicator status-error"></span>
+                            <strong>❌ HTTP Error ${response.status}</strong>
+                            <p style="margin-top: 8px;">${response.statusText}</p>
+                            <div style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 6px;">
+                                <strong>How to Fix:</strong><br>
+                                ${response.status === 404 ? '• Wrong URL or deployment deleted<br>• Create a new deployment and copy the URL' : ''}
+                                ${response.status === 403 ? '• Set "Who has access" to "Anyone"<br>• Re-authorize the script' : ''}
+                                ${response.status === 401 ? '• Authorization required<br>• Make sure deployment is set to "Anyone"' : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                html += `
+                    <div class="result error">
+                        <span class="status-indicator status-error"></span>
+                        <strong>❌ Failed to Connect</strong>
+                        <p style="margin-top: 8px;">Error: ${error.message}</p>
+                        <div style="margin-top: 16px; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 6px;">
+                            <strong>🔧 How to Fix This:</strong><br><br>
+                            <strong>1. Check Deployment Settings:</strong><br>
+                            • Go to Apps Script → Deploy → Manage deployments<br>
+                            • Click Edit (pencil icon)<br>
+                            • Set "Who has access" to <strong>"Anyone"</strong><br>
+                            • Click Deploy<br><br>
+                            
+                            <strong>2. Verify the URL:</strong><br>
+                            • Copy the Web App URL from the deployment<br>
+                            • Make sure it ends with "/exec"<br>
+                            • Paste the complete URL above<br><br>
+                            
+                            <strong>3. Test in Browser:</strong><br>
+                            • Click "Open URL in Browser" button above<br>
+                            • You should see JSON data<br>
+                            • If you see "Authorization required", the access setting is wrong
+                        </div>
+                    </div>
+                `;
+            }
+
+            resultsDiv.innerHTML = html + '</div>';
+        }
+
+        function showResult(type, message) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="card">
+                    <div class="result ${type}">${message}</div>
+                </div>
+            `;
+        }
+
+        // Auto-test on load if URL is present
+        window.onload = function() {
+            const url = getURL();
+            if (url && url !== 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec') {
+                // Auto-run test after 1 second
+                setTimeout(testURL, 1000);
+            }
+        };
+    </script>
+</body>
+</html>
