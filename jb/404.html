@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Figma Make App</title>
-    <script type="module" crossorigin src="/jb/assets/index-Bcu6LRcJ.js"></script>
-    <link rel="stylesheet" crossorigin href="/jb/assets/index-JsC0Qf8Q.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JB Studio</title>
+  <script>
+    // GitHub Pages SPA redirect solution
+    // Save the path and redirect to index.html
+    sessionStorage.redirect = location.href;
+    location.replace(location.pathname.split('/').slice(0, -1).join('/') + '/index.html' + location.search + location.hash);
+  </script>
+</head>
+<body>
+  <!-- This page will never be visible, it immediately redirects -->
+</body>
 </html>

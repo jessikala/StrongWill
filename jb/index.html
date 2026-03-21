@@ -3,7 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Figma Make App</title>
+    <title>JB Studio - Event Management</title>
+    <script>
+      // GitHub Pages SPA redirect handling
+      // Save the path when 404.html redirects here
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
     <script type="module" crossorigin src="/jb/assets/index-Bcu6LRcJ.js"></script>
     <link rel="stylesheet" crossorigin href="/jb/assets/index-JsC0Qf8Q.css">
   </head>
