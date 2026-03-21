@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    // ROOT LEVEL 404.html for GitHub Pages
+    // This file should be placed at the ROOT of your GitHub Pages repository
+    // NOT in the /jb/ subdirectory
+
+    (function() {
+      var path = window.location.pathname;
+
+      // If the path starts with /jb/, redirect to the SPA
+      if (path.startsWith('/jb/')) {
+        // Extract the path after /jb/
+        var redirect = path.slice(3); // Remove /jb from path
+
+        // Redirect to /jb/index.html with the path encoded
+        window.location.replace(
+          '/jb/?/' + redirect.replace(/&/g, '~and~') +
+          (window.location.search ? '&' + window.location.search.slice(1).replace(/&/g, '~and~') : '') +
+          window.location.hash
+        );
+      } else {
+        // For other paths, show a real 404 message
+        document.body.innerHTML = '<h1>404 - Page Not Found</h1><p>The requested page does not exist.</p>';
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
