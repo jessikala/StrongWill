@@ -23,4 +23,4 @@ This repository contains the source code for the StrongWill static website.
 
 ---
 
-© 2025 StrongWill
+© 2026 StrongWill
