@@ -10,19 +10,24 @@
     // NOT in the /jb/ subdirectory
 
     (function() {
-      var path = window.location.pathname;
+      var l = window.location;
+      var path = l.pathname;
 
       // If the path starts with /jb/, redirect to the SPA
-      if (path.startsWith('/jb/')) {
+      if (path.startsWith('/jb/') && path !== '/jb/') {
         // Extract the path after /jb/
-        var redirect = path.slice(3); // Remove /jb from path
+        var pathSegments = path.split('/').filter(Boolean);
 
-        // Redirect to /jb/index.html with the path encoded
-        window.location.replace(
-          '/jb/?/' + redirect.replace(/&/g, '~and~') +
-          (window.location.search ? '&' + window.location.search.slice(1).replace(/&/g, '~and~') : '') +
-          window.location.hash
-        );
+        // First segment should be 'jb', rest is the actual route
+        if (pathSegments[0] === 'jb' && pathSegments.length > 1) {
+          var route = pathSegments.slice(1).join('/');
+
+          // Store the route in sessionStorage for the app to use
+          sessionStorage.setItem('ghpagesRedirect', '/' + route + l.search + l.hash);
+
+          // Redirect to the base /jb/ URL
+          l.replace(l.protocol + '//' + l.host + '/jb/');
+        }
       } else {
         // For other paths, show a real 404 message
         document.body.innerHTML = '<h1>404 - Page Not Found</h1><p>The requested page does not exist.</p>';
