@@ -18,7 +18,12 @@ This repository contains the source code for the StrongWill static website.
    git add .
    git commit -m "Update site"
    git push
+   
    ```
+npm install
+npm run build
+npm run dev
+
 3. Your changes will be live in a few moments at the URL above.
 
 ---
