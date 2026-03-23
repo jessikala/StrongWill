@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JB Studio</title>
+  <script>
+    // GitHub Pages SPA redirect solution for subdirectory deployment
+    (function() {
+      var l = window.location;
+
+      // For /jb/admin -> we want to go to /jb/ with the path stored
+      // Extract the path after /jb/
+      var pathSegments = l.pathname.split('/').filter(Boolean);
+
+      // First segment should be 'jb', rest is the actual route
+      if (pathSegments[0] === 'jb' && pathSegments.length > 1) {
+        var route = pathSegments.slice(1).join('/');
+
+        // Store the route in sessionStorage for the app to use
+        sessionStorage.setItem('ghpagesRedirect', '/' + route + l.search + l.hash);
+
+        // Redirect to the base /jb/ URL
+        l.replace(l.protocol + '//' + l.host + '/jb/');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <!-- This page will never be visible, it immediately redirects -->
+</body>
+</html>
