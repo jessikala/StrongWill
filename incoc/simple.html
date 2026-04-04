@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INCOC Church - Simple Version</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    h1 { color: #333; }
+    p { line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to INCOC</h1>
+  <p>This is a simple HTML version of the INCOC church website.</p>
+  <p><a href="https://www.strongwill.in/">Back to StrongWill</a></p>
+  <p><a href="" id="link">Or visit the full church website</a></p>
+  <script>
+    document.getElementById('link').href = window.location.pathname + 'index.html';
+  </script>
+</body>
+</html>
