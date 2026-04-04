@@ -28,10 +28,21 @@
           // Redirect to the base /jb/ URL
           l.replace(l.protocol + '//' + l.host + '/jb/');
         }
+      } else if (path.startsWith('/incoc/') && path !== '/incoc/') {
+        // Extract the path after /incoc/
+        var pathSegments = path.split('/').filter(Boolean);
+
+        // First segment should be 'incoc', rest is the actual route
+        if (pathSegments[0] === 'incoc' && pathSegments.length > 1) {
+          var route = pathSegments.slice(1).join('/');
+
+          // Store the route in sessionStorage for the app to use
+          sessionStorage.setItem('ghpagesRedirect', '/' + route + l.search + l.hash);
+
+          // Redirect to the base /incoc/ URL
+          l.replace(l.protocol + '//' + l.host + '/incoc/');
+        }
       } else {
-        // For other paths, show a real 404 message
-        document.body.innerHTML = '<h1>404 - Page Not Found</h1><p>The requested page does not exist.</p>';
-      }
     })();
   </script>
 </head>
