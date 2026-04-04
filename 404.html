@@ -13,6 +13,15 @@
       var l = window.location;
       var path = l.pathname;
 
+      // Handle directory requests (e.g., /incoc/ goes to /incoc/index.html)
+      if (path === '/incoc/') {
+        l.replace(l.protocol + '//' + l.host + '/incoc/index.html');
+        return;
+      } else if (path === '/jb/') {
+        l.replace(l.protocol + '//' + l.host + '/jb/index.html');
+        return;
+      }
+
       // If the path starts with /jb/, redirect to the SPA
       if (path.startsWith('/jb/') && path !== '/jb/') {
         // Extract the path after /jb/
